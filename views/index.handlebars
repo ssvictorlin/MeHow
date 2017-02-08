@@ -20,24 +20,28 @@
 
 <body>
 	<header id="main-nav-bar">
-		<a href="" class="icon">
-			<img src="images/settings-icon-128.png" alt="setting" class="img">
+		<a href="" id="setting-button">
+			<img src="images/settings-icon-128.png" alt="setting" class="icon">
 		</a>
-		<a href="" class="icon">
-			<img src="images/calendar-icon-128.png" alt="calendar" class="img">
+		<a href="" id="calendar-button">
+			<img src="images/calendar-icon-128.png" alt="calendar" class="icon">
 		</a>
 	</header>
 	<div class="container">
 
 		<div class="time-bar">
-			<h1>Sat. Feb 10, 2017</h1>
+			<p>Sat. Feb 10, 2017</p>
 		</div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
 		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
-		<div class="entry">
+		<div class="entry clearfix">
 			<a href="">
-				<img src="images/emoji/1f600.png" alt="" class="img">
+				<div class="emoji-block">
+					<img src="images/emoji/1f600.png" alt="" class="emoji">
+					<div class="time"> 8:33 AM </div>
+				</div>
+				<img src="http://lorempixel.com/160/100/" alt="" class="img">
 				<div class="text-entry"> 
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -46,7 +50,6 @@
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
-				<img src="http://lorempixel.com/300/200/" alt="" class="img">
 			</a>
 		</div>
 	</div>

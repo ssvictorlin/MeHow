@@ -1,9 +1,71 @@
 /* this style exists to make it obvious that you've successfully linked
    the CSS to the page. feel free to remove it once the link is working. */
 body {
-     
+
 }
 
-.entry a {
-     text-align: center;
+header {
+	background-color: #b3d9ff;
+}
+
+.icon {
+	width: 64px;
+	padding: 10px;
+}
+
+#calendar-button {
+	float: right;
+}
+
+.container {
+	width: 320px;
+	margin:0 auto;
+	text-align: center;
+}
+
+.time-bar {
+	font-size: 30px;
+	margin-top: 5px;
+	display: inline-block;
+}
+
+.entry {
+	border-radius: 25px;
+    border: 2px solid #b3d9ff;
+    padding: 20px;
+    text-align: left;
+}
+
+.emoji-block {
+	width: 25%;
+	float: left;
+}
+
+.emoji {
+	width: 48px;
+}
+
+.time {
+	font-size: 12px;
+	width: 48px;
+}
+
+.img {
+	width: 75%;
+	float: right;
+}
+
+.text-entry {
+	float: left;
+}
+
+.text-entry p {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+}
+
+.clearfix {
+	clear: both;
 }
