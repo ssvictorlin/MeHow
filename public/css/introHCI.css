@@ -1,5 +1,4 @@
-/* this style exists to make it obvious that you've successfully linked
-   the CSS to the page. feel free to remove it once the link is working. */
+/* global css setting */
 body {
 
 }
@@ -8,17 +7,13 @@ header {
 	background-color: #b3d9ff;
 }
 
+/* for home page */
 .icon {
 	width: 64px;
 	padding: 10px;
 }
 
 #calendar-button {
-	float: right;
-}
-
-#edit-button {
-	width: 72px;
 	float: right;
 }
 
@@ -65,7 +60,7 @@ header {
 	margin-top: 5px;
 }
 
-.text-entry p {
+.text-entry-short p {
 	overflow: hidden;
 	display: -webkit-box;
 	-webkit-line-clamp: 4;
@@ -74,4 +69,38 @@ header {
 
 .clearfix {
 	clear: both;
+}
+
+/* for entry page */
+#edit-button {
+	width: 72px;
+	float: right;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;	
+}
+
+.modal {
+  	text-align: center;
+  	padding: 0!important;
+}
+
+.modal:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -4px;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.modal-header {
+	border-bottom: none;
 }

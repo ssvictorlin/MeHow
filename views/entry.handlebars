@@ -35,12 +35,13 @@
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
 		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
 		<div class="entry clearfix">
+			<div class="emoji-block">
+				<img src="images/emoji/1f600.png" alt="" class="emoji">
+				<div class="time"> 8:33 AM </div>
+			</div>
 			<a href="">
-				<div class="emoji-block">
-					<img src="images/emoji/1f600.png" alt="" class="emoji">
-					<div class="time"> 8:33 AM </div>
-				</div>
-				<img src="http://lorempixel.com/160/100/" alt="" class="img">
+				<img src="http://lorempixel.com/300/200/" class="entry-image" data-toggle="modal" data-target="#myModal">
+			</a>
 				<div class="text-entry"> 
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -49,9 +50,23 @@
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
-			</a>
 		</div>
+		<!-- modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
+              </div>
+              <div class="modal-body">
+                 <img class="img-rounded" src="http://lorempixel.com/600/400/" style="max-width:100%;">
+              </div>
+            </div>
+          </div>
+        </div>  
 	</div>
+
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
