@@ -1,17 +1,13 @@
 <!doctype html>
-
 <html>
 <head>
-	<title>HCI Project Portfolio</title>	
+	<title>Entry</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="css/introHCI.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	
-	<!--<script src="js/introHCI.js"></script>-->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/introHCI.css" rel="stylesheet">
+	<!-- this is a comment in HTML -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,24 +19,28 @@
 
 <body>
 	<header id="main-nav-bar">
-		<a href="" class="icon">
-			<img src="images/settings-icon-128.png" alt="setting" class="img">
+		<a href="/" id="back-button">
+			<img src="images/back-icon-128.png" class="icon">
 		</a>
-		<a href="" class="icon">
-			<img src="images/calendar-icon-128.png" alt="calendar" class="img">
+		<a href="" id="edit-button">
+			<img src="images/edit-icon.png" class="icon">
 		</a>
 	</header>
 	<div class="container">
 
 		<div class="time-bar">
-			<h1>Sat. Feb 10, 2017</h1>
+			<p>Sat. Feb 10, 2017</p>
 		</div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
 		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
-		<div class="entry">
+		<div class="entry clearfix">
 			<a href="">
-				<img src="images/emoji/1f600.png" alt="" class="img">
+				<div class="emoji-block">
+					<img src="images/emoji/1f600.png" alt="" class="emoji">
+					<div class="time"> 8:33 AM </div>
+				</div>
+				<img src="http://lorempixel.com/160/100/" alt="" class="img">
 				<div class="text-entry"> 
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -49,13 +49,11 @@
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
-				<img src="http://lorempixel.com/300/200/" alt="" class="img">
 			</a>
 		</div>
 	</div>
 
-	<div class="add-button">
-		<img src="" >
-	</div>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
