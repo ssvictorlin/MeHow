@@ -12,7 +12,9 @@ var index = require('./routes/index');
 
 var entry = require('./routes/entry');
 
-var add = require('./routes/add')
+var add = require('./routes/add');
+
+var setting = require('./routes/setting');
 // Example route
 // var user = require('./routes/user');
 
@@ -44,6 +46,8 @@ app.get('/', index.view);
 app.get('/entry', entry.viewEntry);
 
 app.get('/add', add.viewAdd);
+
+app.get('/setting', setting.viewSetting);
 
 // Example route
 // app.get('/users', user.list);

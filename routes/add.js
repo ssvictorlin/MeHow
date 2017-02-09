@@ -4,6 +4,7 @@
  */
 
 exports.viewAdd = function(req, res){
-  res.render('add');
+	console.log(req.params);
+  	res.render('add');
 };
 
