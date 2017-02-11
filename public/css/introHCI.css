@@ -131,9 +131,19 @@ img {
 }
 
 
-.emoji_table{
-	padding: 3px;
-	width: 30px;
-	height: 30px;
-	float: left;
+
+table, th, td {
+   border: 1px solid black;
+}
+
+/*.emoji_table{*/
+	/*padding: 5px;*/
+	/*border-radius: 30px;*/
+	/*border: 4px solid skyblue;*/
+/*}*/
+
+.buttons{
+	border-radius: 10px;
+	border: 3px solid skyblue;
+	background-color: lightcyan;
 }

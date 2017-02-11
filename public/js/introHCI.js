@@ -14,6 +14,13 @@
 	    $("#calendar-button").click(function() {
 	       $("#datepicker").toggle(); 
 	    });
+
+	    $(".emoji_ADDPAGE").click(function(){
+	    	console.log("I'm");
+		  	$(this).css('border-radius','10px');
+	    	$(this).css('border','solid 2px blue');
+
+	    });
 	 });
 /*
  * Function that is called when the document is ready.

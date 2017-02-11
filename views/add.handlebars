@@ -1,5 +1,7 @@
 <!doctype html>
 <html>
+
+
 <head>
 	<title>Entry</title>	
 	<meta charset="utf-8">
@@ -24,24 +26,45 @@
 		</a>
 	</header>
 	<div class="container">
-		
 		<div class="time-bar">
 			<p>Sat. Feb 10, 2017</p>
 		</div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
 		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
+		
 		<div class="clearfix">
 			<h3> How are you doing right now? </h3>
 		</div>
-		<!-- <div class="emojis"> -->
-			<img src="images/emoji/1f600.png" class="emoji_table">
-			<img src="images/emoji/1f601.png" class="emoji_table">
-		<!-- </div> -->
+		<div style="padding-bottom:25px" >
+			<table style="width:100%"  class="emoji_table">
+				<script>
+					document.writeln("<tr>");
+					var cnt=0;	
+					{{#each emojis}}
+						document.writeln('<td><img src={{imageURL}} id={{id}} class="emoji_ADDPAGE" width=40px height=40px></td>');	
+						cnt++;
+						if(cnt%6==0){
+							document.writeln("</tr><tr>");
+						}
+					{{/each}}
+					document.writeln("</tr>");
+				</script>
+			</table>
+		</div>
+		<div>
+			<table style="width:100%">
+				<td><img src="images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
+				<td><img src="images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px></td>		
+				<td><img src="images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
+			</table>
+		</div>
 	</div>
 
 
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="js/introHCI.js"></script>
 </body>
 </html>
