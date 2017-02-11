@@ -1,0 +1,25 @@
+{
+	"backupEmojis":[
+		{
+			"id": "emoji_37",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f637.png"
+		},
+		{
+			"id": "emoji_38",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f638.png"
+		},
+		{
+			"id": "emoji_39",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f639.png"
+		},
+		{
+			"id": "emoji_40",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f640.png"
+		}
+	]
+}
+		

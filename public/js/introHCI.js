@@ -1,5 +1,6 @@
 'use strict';
-
+var lastEmojiId = 0;
+var text ="";
 // Call this function when the page loads (the "ready" event)
      $(document).ready(function() {
 	    $("#datepicker").datepicker({
@@ -16,12 +17,40 @@
 	    });
 
 	    $(".emoji_ADDPAGE").click(function(){
-	    	console.log("I'm");
-		  	$(this).css('border-radius','10px');
-	    	$(this).css('border','solid 2px blue');
-
+	    	//Draw the clicked one.
+    		$(this).attr("class","selected");
+    		var EmojiId = $(this).attr("id");
+    		//Undraw the last one.
+    		if(EmojiId!=lastEmojiId)
+    			$("#"+lastEmojiId).removeAttr("class","selected");
+	    	//Update EmojiId
+	    	lastEmojiId = EmojiId;
+	    	console.log(EmojiId);
 	    });
-	 });
+
+	    $("#memoButton").click(function(){
+	    	console.log("memoButton clicked");
+	    	$("#textareaAtAdd").toggle();
+	    	goToBottom();
+	    });
+
+	    $("#cameraButton").click(function(){
+	    	console.log("cameraButton clicled");
+	    });
+
+	    $("#recorderButton").click(function(){
+	    	console.log("recorderButton clicked");
+	    });
+
+	    $("#textareaAtAdd").hide();
+	});
+
+    function goToBottom(){
+		var documentHeight=document.documentElement.offsetHeight;
+		var viewportHeight=window.innerHeight;
+		window.scrollTo(0,documentHeight-viewportHeight);
+	} 
+
 /*
  * Function that is called when the document is ready.
  */

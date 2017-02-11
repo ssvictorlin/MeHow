@@ -42,7 +42,7 @@
 					document.writeln("<tr>");
 					var cnt=0;	
 					{{#each emojis}}
-						document.writeln('<td><img src={{imageURL}} id={{id}} class="emoji_ADDPAGE" width=40px height=40px></td>');	
+						document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emoji_ADDPAGE" width=40px height=40px></td></div>');	
 						cnt++;
 						if(cnt%6==0){
 							document.writeln("</tr><tr>");
@@ -52,12 +52,20 @@
 				</script>
 			</table>
 		</div>
-		<div>
+		<div style="padding-bottom:25px">
 			<table style="width:100%">
 				<td><img src="images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
 				<td><img src="images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px></td>		
 				<td><img src="images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
 			</table>
+		</div>
+
+		<div>
+			<form>
+	    		<div class="form-group" id="textareaAtAdd">
+	      		<textarea class="form-control" rows="3"  font-size: 30px></textarea>
+	    		</div>
+	  		</form>
 		</div>
 	</div>
 

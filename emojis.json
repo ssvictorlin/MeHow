@@ -1,204 +1,184 @@
 {
 	"emojis": [
 		{
-			"id": "1",
+			"id": "emoji_1",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f600.png"
 		},
 		{
-			"id": "2",
+			"id": "emoji_2",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f601.png"
 		},
 		{
-			"id": "3",
+			"id": "emoji_3",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f603.png"
 		},
 		{
-			"id": "4",
+			"id": "emoji_4",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f604.png"
 		},
 		{
-			"id": "5",
+			"id": "emoji_5",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f605.png"
 		},
 		{
-			"id": "6",
+			"id": "emoji_6",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f606.png"
 		},
 		{
-			"id": "7",
+			"id": "emoji_7",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f607.png"
 		},
 		{
-			"id": "8",
+			"id": "emoji_8",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f608.png"
 		},
 		{
-			"id": "9",
+			"id": "emoji_9",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f609.png"
 		},
 		{
-			"id": "10",
+			"id": "emoji_10",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f610.png"
 		},
 		{
-			"id": "11",
+			"id": "emoji_11",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f611.png"
 		},
 		{
-			"id": "12",
+			"id": "emoji_12",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f612.png"
 		},
 		{
-			"id": "13",
+			"id": "emoji_13",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f613.png"
 		},
 		{
-			"id": "14",
+			"id": "emoji_14",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f614.png"
 		},
 		{
-			"id": "15",
+			"id": "emoji_15",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f615.png"
 		},
 		{
-			"id": "16",
+			"id": "emoji_16",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f616.png"
 		},
 		{
-			"id": "17",
+			"id": "emoji_17",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f617.png"
 		},
 		{
-			"id": "18",
+			"id": "emoji_18",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f618.png"
 		},
 		{
-			"id": "19",
+			"id": "emoji_19",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f619.png"
 		},
 		{
-			"id": "20",
+			"id": "emoji_20",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f620.png"
 		},
 		{
-			"id": "21",
+			"id": "emoji_21",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f621.png"
 		},
 		{
-			"id": "22",
+			"id": "emoji_22",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f622.png"
 		},
 		{
-			"id": "23",
+			"id": "emoji_23",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f623.png"
 		},
 		{
-			"id": "24",
+			"id": "emoji_24",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f624.png"
 		},
 		{
-			"id": "25",
+			"id": "emoji_25",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f625.png"
 		},
 		{
-			"id": "26",
+			"id": "emoji_26",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f626.png"
 		},
 		{
-			"id": "27",
+			"id": "emoji_27",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f627.png"
 		},
 		{
-			"id": "28",
+			"id": "emoji_28",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f628.png"
 		},
 		{
-			"id": "29",
+			"id": "emoji_29",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f629.png"
 		},
 		{
-			"id": "30",
+			"id": "emoji_30",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f630.png"
 		},
 		{
-			"id": "31",
+			"id": "emoji_31",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f631.png"
 		},
 		{
-			"id": "32",
+			"id": "emoji_32",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f632.png"
 		},
 		{
-			"id": "33",
+			"id": "emoji_33",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f633.png"
 		},
 		{
-			"id": "34",
+			"id": "emoji_34",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f634.png"
 		},
 		{
-			"id": "35",
+			"id": "emoji_35",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f635.png"
 		},
 		{
-			"id": "36",
+			"id": "emoji_36",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f636.png"
-		},
-		{
-			"id": "37",
-			"description": "Happy Face",
-			"imageURL": "/images/emoji/1f637.png"
-		},
-		{
-			"id": "38",
-			"description": "Happy Face",
-			"imageURL": "/images/emoji/1f638.png"
-		},
-		{
-			"id": "39",
-			"description": "Happy Face",
-			"imageURL": "/images/emoji/1f639.png"
-		},
-		{
-			"id": "40",
-			"description": "Happy Face",
-			"imageURL": "/images/emoji/1f640.png"
 		}
 	]
 }
