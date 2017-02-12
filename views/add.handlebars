@@ -36,8 +36,9 @@
 		<div class="clearfix">
 			<h3> How are you doing right now? </h3>
 		</div>
-		<div style="padding-bottom:25px" >
-			<table style="width:100%"  class="emoji_table">
+		
+		<div  class="emoji-table">
+			<table style="width:100%">
 				<script>
 					document.writeln("<tr>");
 					var cnt=0;	
@@ -52,23 +53,27 @@
 				</script>
 			</table>
 		</div>
-		<div style="padding-bottom:25px">
+
+
+
+		<div style="margin: 10px">
 			<table style="width:100%">
 				<td><img src="images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
-				<td><img src="images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px></td>		
+				<td><img src="images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px></td>
 				<td><img src="images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
 			</table>
 		</div>
 
-		<div>
-			<form>
-	    		<div class="form-group" id="textareaAtAdd">
-	      		<textarea class="form-control" rows="3"  font-size: 30px></textarea>
-	    		</div>
-	  		</form>
+		<div class="form-group clearfix">
+	      	<textarea class="form-control" id="textareaAtAdd" rows="2"></textarea>
+	    </div>
+		
+	    <div class="button-row" style="margin-bottom: 50px">
+			<a href="/" id="cancel-button">Cancel</a>
+			<a href="" id="save-button">Save</a>
 		</div>
-	</div>
 
+	</div>
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
