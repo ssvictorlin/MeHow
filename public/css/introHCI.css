@@ -136,15 +136,58 @@ img {
 	border-bottom: none;
 }
 
+
+.button-row {
+	margin-top: 10px;
+	display: inline-block;
+}
+
+#save-button {
+	position: fixed;
+    bottom: 0px;
+    right: 0px;
+	/*float: right;*/
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 50%;
+    cursor: pointer;
+}
+
+#cancel-button {
+	position: fixed;
+    bottom: 0px;
+    left: 0px;
+	/*float: left;*/
+	background-color: #DE6461;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 50%;
+    cursor: pointer;
+}
+
+
 /*table, th, td {*/
    /*border: 1px solid black;*/
 /*}*/
 
-/*.emoji_table{*/
-	/*padding: 5px;*/
-	/*border-radius: 30px;*/
-	/*border: 4px solid skyblue;*/
-/*}*/
+.emoji-table{
+	border-radius: 25px;
+    border: 2px solid #b3d9ff;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 10px;
+}
 
 .selected{
 	border-radius: 10px;
@@ -154,12 +197,12 @@ img {
 .buttons{
 	border-radius: 10px;
 	border: 3px solid skyblue;
-	/*background-color: lightcyan;*/
 }
 
-#addText{
-	font-size: 20px;
+#textareaAtAdd{
+	font-size: 15px;
 }
+
 
 #delete-button {
 	background-color: #FF0000;
