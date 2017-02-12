@@ -26,13 +26,15 @@ div.ui-datepicker td {
 }
 
 .container {
-	width: 320px;
-	margin:0 auto;
+	/*width: 400px;*/
+	width: 90%;
+	/*margin:5 auto;*/
+	margin: 5%;
 	text-align: center;
 }
 
 .time-bar {
-	font-size: 30px;
+	font-size: 5vw;
 	margin-top: 5px;
 	display: inline-block;
 }
@@ -48,6 +50,10 @@ div.ui-datepicker td {
 .emoji-block {
 	width: 25%;
 	float: left;
+}
+
+.emoji-table {
+	width: 100%;
 }
 
 .emoji {
@@ -130,8 +136,6 @@ img {
 	border-bottom: none;
 }
 
-
-
 /*table, th, td {*/
    /*border: 1px solid black;*/
 /*}*/
@@ -155,4 +159,72 @@ img {
 
 #addText{
 	font-size: 20px;
+}
+
+#delete-button {
+	background-color: #FF0000;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 5%;
+    margin-bottom: 60px;
+}
+
+.button-row {
+	margin-top: 10px;
+	display: block;
+}
+
+#save-button {
+	position: fixed;
+    bottom: 0px;
+    right: 0px;
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 50%;
+    cursor: pointer;
+}
+
+#cancel-button {
+	position: fixed;
+    bottom: 0px;
+    left: 0px;
+	background-color: #DE6461;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 50%;
+    cursor: pointer;
+}
+
+.edit-text-entry {
+	width: 100%;
+	height: auto;
+	resize: none;
+	margin-top: 5px;
+    overflow-y: auto;
+	padding: 5px;
+}
+
+.edit-text-entry[disabled] {
+	background-color: #FFFFFF;
+	border: none;
+	color: #000000;
+}
+
+.inputShadow{
+	box-shadow: 2px 2px 2px 0px #dddddd;
 }
