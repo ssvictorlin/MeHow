@@ -18,6 +18,8 @@ function initializePage() {
 
     $("#save-button").hide();
     $("#save-button").click( save );
+
+    $(".emojis").click( choose_emoji );
 }
 
 function edit(e) {
@@ -60,4 +62,11 @@ function save(e) {
     close_edit(e);
     $("#edit-text").height( "auto" );
     $("#edit-text").height( $("#edit-text")[0].scrollHeight );
+}
+
+function choose_emoji(e) {
+    e.preventDefault();
+    $(this).addClass("selected");
+    $("#emoji-modal").modal("toggle");
+    $("#entry-emoji").attr("src", $(this).attr("src"));
 }
