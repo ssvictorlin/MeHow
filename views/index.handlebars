@@ -26,15 +26,49 @@
 		<a><img src="images/calendar-icon-128.png" alt="calendar" class="icon" id="calendar-button"></a>
 		<div id="datepicker"></div>
 	</header>
-	<div class="container">
 
-		<div class="time-bar">
-			<p>Wed. Fed 8, 2017</p>
-		</div>
-		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
-		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
-		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
-		<div class="entry clearfix">
+	<!-- <script id="memories-container" type="text/x-handlebars-template"> -->
+	<div class="container">
+		{{#each memories}}
+		{{#if date.month}}
+			<div class="time-bar">
+				<p>{{date.weekday}} {{date.month}} {{date.day}}, {{date.year}}</p>
+			</div>
+		{{/if}}
+			<div class="entry clearfix">
+				<a href="/entry">
+					<div class="emoji-block">
+						<img src="{{emojiImageURL}}" alt="" class="emoji">
+						<div class="time">{{time.hour}}:{{time.minute}}</div>
+					</div>
+					<img src="{{imageURL}}" alt="" class="img">
+					<div class=" text-entry text-entry-short"> 
+						<p>{{memo}}</p>
+					</div>
+				</a>
+			</div>
+		{{/each}}
+	</div>
+	<!-- </script> -->
+	<!-- <script id="memories-container" type="text/javascript">  -->
+	
+	<!-- </script> -->
+		<!-- <table class="emoji-table" id="emoji-table">
+			<script>
+				document.writeln("<tr>");
+				var cnt=0;	
+				{{#each emojis}}
+					document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emojis" width=40px height=40px></td></div>');	
+					cnt++;
+					if(cnt%6==0){
+						document.writeln("</tr><tr>");
+					}
+				{{/each}}
+				document.writeln("</tr>");
+			</script>
+		</table> -->
+
+		<!-- <div class="entry clearfix">
 			<a href="/entry">
 				<div class="emoji-block">
 					<img src="images/emoji/1f600.png" alt="" class="emoji">
@@ -67,8 +101,7 @@
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 			</a>
-		</div>
-	</div>
+		</div> -->
 
 	<div class="add-button">
 		<a href="/add">

@@ -20,6 +20,7 @@ function initializePage() {
     $("#save-button").click( save );
 
     $(".emojis").click( choose_emoji );
+    $("#emoji-modal").modal("hide");
 }
 
 function edit(e) {
@@ -30,6 +31,8 @@ function edit(e) {
     $("#entry-time").addClass("inputShadow");
     $("#entry-emoji").addClass("inputShadow");
     $("#entry-image").addClass("inputShadow");
+
+    $("#entry-emoji").attr("data-target", "#emoji-modal");
 
     $("#edit-button").hide();
     $("#delete-button").show();
@@ -50,6 +53,11 @@ function close_edit(e) {
     $("#entry-emoji").removeClass("inputShadow");
     $("#entry-image").removeClass("inputShadow");
 
+    $("#edit-text").height( "auto" );
+    $("#edit-text").height( $("#edit-text")[0].scrollHeight );
+
+    $("#entry-emoji").attr("data-target", "");
+
     $("#edit-button").show();
     $("#delete-button").hide();
     $("#cancel-button").hide();
@@ -60,8 +68,7 @@ function save(e) {
     e.preventDefault();
     console.log("save!!");
     close_edit(e);
-    $("#edit-text").height( "auto" );
-    $("#edit-text").height( $("#edit-text")[0].scrollHeight );
+    
 }
 
 function choose_emoji(e) {
