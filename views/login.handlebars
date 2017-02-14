@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Entry</title>	
+	<title>Login</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -14,29 +14,39 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
+    <![endif]--> 
+    <script>
+		function redirect(){ 
+			setTimeout(function(){ window.location="/index"; } , 3000); 
+		}
+	</script>       
 </head>
 
 <body>
 	<header id="main-nav-bar">
-		<a href="/index" id="back-button">
-			<img src="images/back-icon-128.png" class="icon">
-		</a>
 	</header>
 	<div class="container">
-
-		<h1> You are looking at a setting page </h1>
-		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
-		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
-		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
-		<div class="entry clearfix">
-			  <input type="text" name="fname" placeholder="What's your name?"><br>
+		<div class="clearfix">
+			<h2>Me How</h2>
+			<h4>Please login with your name</h4>
+				<div class="login-container">
+		            <div class="avatar"></div>
+		            <div id="loading" class="spinner"></div>
+		            <div class="form-box">
+		                <form action="http://google.com" method="">
+		                    <input name="user" type="text" placeholder="name">
+		                    <button class="btn btn-info btn-block login" name="login-submit" type="submit" onclick="redirect()">Login</button>
+		                    <div id="output"></div>
+		                </form>
+	           		</div>
+        		</div>
 		</div>
-		
 	</div>
 
 
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/introHCI.js"></script>
 </body>
 </html>
