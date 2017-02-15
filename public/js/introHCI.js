@@ -70,6 +70,7 @@ $(document).ready(function() {
             $(".avatar").css({
                 "background-image": "url('http://lorempixel.com/200/200/people')"
             });
+            redirect();
             /*$('.avatar').load(function() {
 					 window.location.href = "/index";
 			});*/
@@ -82,13 +83,16 @@ $(document).ready(function() {
     });
 });
 
-function goToBottom(){
+function goToBottom() {
 	var documentHeight=document.documentElement.offsetHeight;
 	var viewportHeight=window.innerHeight;
 	window.scrollTo(0,documentHeight-viewportHeight);
 } 
 // function that capitalize the first letter for each word. e.q. victor lin => Victor Lin
-function toTitleCase(str)
-{
+function toTitleCase(str) {
 	return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+function redirect() { 
+            setTimeout(function(){ window.location="/index"; } , 3000); 
 }
