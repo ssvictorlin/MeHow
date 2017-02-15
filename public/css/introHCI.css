@@ -136,7 +136,6 @@ img {
 	border-bottom: none;
 }
 
-
 .button-row {
 	margin-top: 10px;
 	display: inline-block;
@@ -175,7 +174,6 @@ img {
     width: 50%;
     cursor: pointer;
 }
-
 
 /*table, th, td {*/
    /*border: 1px solid black;*/
@@ -403,4 +401,6 @@ button[name="login-submit"].alert-success{
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
+}
+
 }
