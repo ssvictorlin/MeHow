@@ -179,7 +179,7 @@ img {
    /*border: 1px solid black;*/
 /*}*/
 
-.emoji-table{
+.emoji-table {
 	border-radius: 25px;
     border: 2px solid #b3d9ff;
     padding: 20px;
@@ -187,17 +187,21 @@ img {
     margin-bottom: 10px;
 }
 
-.selected{
+table td {
+    text-align: center;
+}
+
+.selected {
 	border-radius: 10px;
 	border: 2px solid red;
 }
 
-.buttons{
+.buttons {
 	border-radius: 10px;
 	border: 3px solid skyblue;
 }
 
-#textareaAtAdd{
+#textareaAtAdd {
 	font-size: 15px;
 }
 
