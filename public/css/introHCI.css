@@ -27,7 +27,7 @@ div.ui-datepicker td {
 
 .container {
 	width: 100%;
-	height: 100%;
+	height: auto;/*100%;*/
 	margin:0 auto;
 
 	text-align: center;
@@ -47,13 +47,13 @@ div.ui-datepicker td {
     margin-bottom: 10px;
 }
 
+.emoji-table{
+    width: 100%;
+}
+
 .emoji-block {
 	width: 25%;
 	float: left;
-}
-
-.emoji-table {
-	width: 100%;
 }
 
 .emoji {
@@ -156,6 +156,7 @@ img {
     font-size: 16px;
     width: 50%;
     cursor: pointer;
+    z-index: 1;
 }
 
 #cancel-button {
@@ -173,13 +174,16 @@ img {
     font-size: 16px;
     width: 50%;
     cursor: pointer;
+    z-index: 1;
 }
 
 /*table, th, td {*/
    /*border: 1px solid black;*/
 /*}*/
 
-.emoji-table {
+
+#emojiTableAtAdd{
+    width: 100%;
 	border-radius: 25px;
     border: 2px solid #b3d9ff;
     padding: 20px;
@@ -223,6 +227,7 @@ table td {
 .button-row {
 	margin-top: 10px;
 	display: block;
+    z-index: 1;
 }
 
 #save-button {

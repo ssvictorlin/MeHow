@@ -30,21 +30,27 @@ $(document).ready(function() {
     });
 
     $("#memoButton").click(function(){
-    	console.log("memoButton clicked");
+    	// console.log("memoButton clicked");  
     	$("#textareaAtAdd").toggle();
+        $("#audioAreaAtAdd").hide();
+        $("#cameraAreaAtAdd").hide();
     	goToBottom();
     });
 
     $("#cameraButton").click(function(){
-    	console.log("cameraButton clicled");
+    	console.log("cameraButton clicked");
     });
 
     $("#recorderButton").click(function(){
-    	console.log("recorderButton clicked");
+    	// console.log("recorderButton clicked");
+        $('#audioAreaAtAdd').toggle();
+        $("#textareaAtAdd").hide();
+        $("#cameraAreaAtAdd").hide();
+        goToBottom();
     });
 
     $("#textareaAtAdd").hide();
-
+    $("#audioAreaAtAdd").hide();
     // LOGIN: sumbit button pressed
 
     var textfield = $("input[name=user]");
@@ -84,9 +90,10 @@ $(document).ready(function() {
 });
 
 function goToBottom() {
-	var documentHeight=document.documentElement.offsetHeight;
-	var viewportHeight=window.innerHeight;
-	window.scrollTo(0,documentHeight-viewportHeight);
+	// var documentHeight=document.documentElement.offsetHeight;
+	// var viewportHeight=window.innerHeight;
+	// window.scrollTo(0,documentHeight-viewportHeight);
+    window.scrollTo(0,document.body.scrollHeight);
 } 
 // function that capitalize the first letter for each word. e.q. victor lin => Victor Lin
 function toTitleCase(str) {
