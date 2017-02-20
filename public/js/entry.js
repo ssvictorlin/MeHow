@@ -73,7 +73,6 @@ function save(e) {
 
 function choose_emoji(e) {
     e.preventDefault();
-    $(this).addClass("selected");
     $("#emoji-modal").modal("toggle");
     $("#entry-emoji").attr("src", $(this).attr("src"));
 }

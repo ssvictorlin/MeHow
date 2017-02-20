@@ -30,13 +30,13 @@
 	<!-- <script id="memories-container" type="text/x-handlebars-template"> -->
 	<div class="container">
 		{{#each memories}}
-		{{#if date.month}}
+		{{#if date.visible}}
 			<div class="time-bar">
 				<p>{{date.weekday}} {{date.month}} {{date.day}}, {{date.year}}</p>
 			</div>
 		{{/if}}
 			<div class="entry clearfix">
-				<a href="/entry">
+				<a href="/entry/{{id}}">
 					<div class="emoji-block">
 						<img src="{{emojiImageURL}}" alt="" class="emoji">
 						<div class="time">{{time.hour}}:{{time.minute}}</div>
@@ -49,60 +49,7 @@
 			</div>
 		{{/each}}
 	</div>
-	<!-- </script> -->
-	<!-- <script id="memories-container" type="text/javascript">  -->
 	
-	<!-- </script> -->
-		<!-- <table class="emoji-table" id="emoji-table">
-			<script>
-				document.writeln("<tr>");
-				var cnt=0;	
-				{{#each emojis}}
-					document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emojis" width=40px height=40px></td></div>');	
-					cnt++;
-					if(cnt%6==0){
-						document.writeln("</tr><tr>");
-					}
-				{{/each}}
-				document.writeln("</tr>");
-			</script>
-		</table> -->
-
-		<!-- <div class="entry clearfix">
-			<a href="/entry">
-				<div class="emoji-block">
-					<img src="images/emoji/1f600.png" alt="" class="emoji">
-					<div class="time"> 8:33 AM </div>
-				</div>
-				<img src="http://lorempixel.com/160/100/" alt="" class="img">
-				<div class=" text-entry text-entry-short"> 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div>
-			</a>
-		</div>
-		<div class="entry clearfix">
-			<a href="/entry">
-				<div class="emoji-block">
-					<img src="images/emoji/1f600.png" alt="" class="emoji">
-					<div class="time"> 10:00 PM </div>
-				</div>
-				<img src="http://lorempixel.com/160/100/" alt="" class="img">
-				<div class=" text-entry text-entry-short"> 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div>
-			</a>
-		</div> -->
-
 	<div class="add-button">
 		<a href="/add">
 			<img src="images/addbutton-icon-128.png" class="big-icon">

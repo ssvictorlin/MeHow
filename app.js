@@ -47,7 +47,7 @@ app.get('/', login.viewLogin);
 
 app.get('/index', index.view);
 
-app.get('/entry', entry.viewEntry);
+app.get('/entry/:id', entry.viewEntry);
 
 app.get('/add', add.viewAdd);
 

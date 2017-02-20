@@ -3,7 +3,6 @@
  * GET home page.
  */
 
-// var memories = ;
 var memories = require('../memories.json');
 var emojis = require('../emojis.json');
 
@@ -88,23 +87,25 @@ function timeToString(time) {
 }
 
 exports.view = function(req, res){
-	var context = { "memories": require('../memories.json'), "emojis": require('../emojis.json')};
 	for (var i = 0; i < memories.memories.length; i++) {
 		// deal with date/time string
 		memories.memories[i].date = addWeekday(memories.memories[i].date);
 		memories.memories[i].date = monthToString(memories.memories[i].date);
 		memories.memories[i].time = timeToString(memories.memories[i].time);
 	}
+
+	memories.memories[0].date.visible = 1;
 	for (var i = 1; i < memories.memories.length; i++) {
 		// hide same date event
 		if ((memories.memories[i].date.day == memories.memories[i - 1].date.day) &&
 			(memories.memories[i].date.month == memories.memories[i - 1].date.month) &&
 			(memories.memories[i].date.year == memories.memories[i - 1].date.year)) {
-			memories.memories[i].date.day = 0;
-			memories.memories[i].date.month = 0;
-			memories.memories[i].date.year = 0;
+			memories.memories[i].date.visible = 0;
 		}
+		else
+			memories.memories[i].date.visible = 1;
 	}
+
 	for (var i = 0; i < memories.memories.length; i++) {
 		// find emoji of that day
 		for (var j = 0; j < emojis.emojis.length; j++) {
