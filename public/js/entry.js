@@ -10,19 +10,19 @@ function initializePage() {
     $("#edit-text").height( $("#edit-text")[0].scrollHeight );
     $("#edit-button").click( edit );
 
-    // $("#delete-button").hide();
+    $("#delete-button").hide();
     $("#delete-button").click( delete_entry );
 
-    // $("#cancel-button").hide();
+    $("#cancel-button").hide();
     $("#cancel-button").click( close_edit );
 
-    // $("#save-button").hide();
+    $("#save-button").hide();
     $("#save-button").click( save );
 
     $(".emojis").click( choose_emoji );
     $("#emoji-modal").modal("hide");
 
-    // $('#datetime24').hide();
+    $('#datetime24').hide();
 }
 
 function edit(e) {

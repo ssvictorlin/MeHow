@@ -62,7 +62,7 @@
 		<div style="margin: 10px;">
 			<table style="width:100%">
 				<td><img src="images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
-				<td><img src="images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px></td>
+				<td><img src="images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
 				<td><img src="images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
 			</table>
 		</div>
@@ -83,7 +83,31 @@
 
 	    	</section>
       	</div> 
-		
+
+      	<!-- <div class="clearfix"> -->
+      	<div id="cameraAreaAtAdd">
+			<canvas id="camera-canvas"></canvas>
+      	</div>
+
+      	<div class="modal fade" id="camera-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
+              </div>
+              <div class="modal-body">
+      			<video id="video" width="100%" height="auto" autoplay></video>
+      			<div class="button-row">
+	      			<button id="snap" class="camera-modal-button">Snap Photo</button>
+					<button id="gallery" class="camera-modal-button">Choose From Gallery</button>
+      			</div>
+				
+              </div>
+            </div>
+          </div>
+        </div>
+
 		<div class="button-row">
 			<a href="/entry" id="cancel-button">Cancel</a>
 			<a href="" id="save-button">Save</a>

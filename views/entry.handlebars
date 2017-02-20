@@ -26,7 +26,7 @@
 	</header>
 	<div class="container">
 		<div class="time-bar" >
-			<input id="datetime24" data-format="HH:mm MM-DD-YYYY" data-template="HH : mm MM / DD / YYYY" name="datetime" value="{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.month}}-{{memory.date.day}}-{{memory.date.year}}" type="text" hidden>
+			<input id="datetime24" data-format="HH:mm MM-DD-YYYY" data-template="HH : mm MM / DD / YYYY" name="datetime" value="{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.month}}-{{memory.date.day}}-{{memory.date.year}}" type="text">
 			<p id="entry-time">{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.weekday}} {{memory.date.monthText}} {{memory.date.day}}, {{memory.date.year}}</p>
 		</div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
@@ -86,11 +86,11 @@
           </div>
         </div>  
 	</div>
-	<a href="" id="delete-button" hidden="true">Delete</a>
+	<a href="" id="delete-button">Delete</a>
 
 	<div class="button-row">
-		<a href="/" id="cancel-button" hidden>Cancel</a>
-		<a href="" id="save-button" hidden>Save</a>
+		<a href="/" id="cancel-button">Cancel</a>
+		<a href="" id="save-button">Save</a>
 	</div>
 
 	<script src="https://code.jquery.com/jquery.js"></script>

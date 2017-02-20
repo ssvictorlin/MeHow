@@ -29,7 +29,6 @@ div.ui-datepicker td {
 	width: 100%;
 	height: auto;/*100%;*/
 	margin:0 auto;
-
 	text-align: center;
 }
 
@@ -139,7 +138,8 @@ img {
 
 .button-row {
 	margin-top: 10px;
-	display: inline-block;
+	/*display: inline-block;*/
+    text-align: center;
 }
 
 #save-button {
@@ -225,42 +225,6 @@ table td {
     margin-bottom: 60px;
 }
 
-.button-row {
-	margin-top: 10px;
-	display: block;
-    z-index: 1;
-}
-
-#save-button {
-	position: fixed;
-    bottom: 0px;
-    right: 0px;
-	background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    width: 50%;
-    cursor: pointer;
-}
-
-#cancel-button {
-	position: fixed;
-    bottom: 0px;
-    left: 0px;
-	background-color: #DE6461;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    width: 50%;
-    cursor: pointer;
-}
-
 .edit-text-entry {
 	width: 100%;
 	height: auto;
@@ -278,6 +242,7 @@ table td {
 
 .inputShadow{
 	box-shadow: 2px 2px 2px 0px #dddddd;
+    border: 1px solid #000000;
 }
 /* for login page */
 
@@ -413,4 +378,14 @@ button[name="login-submit"].alert-success{
   animation-name: fadeInUp;
 }
 
+.camera-modal-button {
+    width: 45%;
+    padding: 5px;
+    background-color: #808080;
+    font-size: 3vw;
+}
+
+#camera-canvas{
+    width: 100%;
+    height: auto;
 }
