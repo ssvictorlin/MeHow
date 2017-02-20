@@ -26,7 +26,8 @@
 	</header>
 	<div class="container">
 		<div class="time-bar" >
-			<p id="entry-time">{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.weekday}} {{memory.date.month}} {{memory.date.day}}, {{memory.date.year}}</p>
+			<input id="datetime24" data-format="HH:mm MM-DD-YYYY" data-template="HH : mm MM / DD / YYYY" name="datetime" value="{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.month}}-{{memory.date.day}}-{{memory.date.year}}" type="text">
+			<p id="entry-time">{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.weekday}} {{memory.date.monthText}} {{memory.date.day}}, {{memory.date.year}}</p>
 		</div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
@@ -96,6 +97,8 @@
 
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/entry.js"></script>
+	<script src="/js/moment.js"></script>
+	<script src="/js/combodate.js"></script>
 
 </body>
 </html>

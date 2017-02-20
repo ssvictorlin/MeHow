@@ -6,7 +6,8 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
+var moment = require('moment');
 
 var login = require('./routes/login');
 
@@ -17,6 +18,7 @@ var entry = require('./routes/entry');
 var add = require('./routes/add');
 
 var setting = require('./routes/setting');
+
 // Example route
 // var user = require('./routes/user');
 

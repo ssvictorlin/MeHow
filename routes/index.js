@@ -5,8 +5,9 @@
 
 var memories = require('../memories.json');
 var emojis = require('../emojis.json');
+var index = require('./index');
 
-function addWeekday(date) {
+exports.addWeekday = function addWeekday(date) {
 	console.log(date);
 	var day = new Date(date.year, date.month - 1, date.day);
 	console.log(day.getDay());
@@ -36,49 +37,49 @@ function addWeekday(date) {
 	return date;
 }
 
-function monthToString(date) {
+exports.monthToString = function monthToString(date) {
 	switch(date.month) {
 		case 1:
-			date.month = "Jan";
+			date.monthText = "Jan";
 			break;
 		case 2:
-			date.month = "Feb";
+			date.monthText = "Feb";
 			break;
 		case 3:
-			date.month = "Mar";
+			date.monthText = "Mar";
 			break;
 		case 4:
-			date.month = "Apr";
+			date.monthText = "Apr";
 			break;
 		case 5:
-			date.month = "May";
+			date.monthText = "May";
 			break;
 		case 6:
-			date.month = "Jun";
+			date.monthText = "Jun";
 			break;
 		case 7:
-			date.month = "Jul";
+			date.monthText = "Jul";
 			break;
 		case 8:
-			date.month = "Aug";
+			date.monthText = "Aug";
 			break;
 		case 9:
-			date.month = "Sep";
+			date.monthText = "Sep";
 			break;
 		case 10:
-			date.month = "Oct";
+			date.monthText = "Oct";
 			break;
 		case 11:
-			date.month = "Nov";
+			date.monthText = "Nov";
 			break;
 		case 12:
-			date.month = "Dec";
+			date.monthText = "Dec";
 			break;
 	}
 	return date;
 }
 
-function timeToString(time) {
+exports.timeToString = function timeToString(time) {
 	if (time.hour / 10 < 1)
 		time.hour = ("0" + time.hour).slice(-2);
 	if (time.minute / 10 < 1)
@@ -89,9 +90,9 @@ function timeToString(time) {
 exports.view = function(req, res){
 	for (var i = 0; i < memories.memories.length; i++) {
 		// deal with date/time string
-		memories.memories[i].date = addWeekday(memories.memories[i].date);
-		memories.memories[i].date = monthToString(memories.memories[i].date);
-		memories.memories[i].time = timeToString(memories.memories[i].time);
+		memories.memories[i].date = index.addWeekday(memories.memories[i].date);
+		memories.memories[i].date = index.monthToString(memories.memories[i].date);
+		memories.memories[i].time = index.timeToString(memories.memories[i].time);
 	}
 
 	memories.memories[0].date.visible = 1;

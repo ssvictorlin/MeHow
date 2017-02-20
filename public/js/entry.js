@@ -21,6 +21,8 @@ function initializePage() {
 
     $(".emojis").click( choose_emoji );
     $("#emoji-modal").modal("hide");
+
+    $('#datetime24').hide();
 }
 
 function edit(e) {
@@ -38,6 +40,10 @@ function edit(e) {
     $("#delete-button").show();
     $("#cancel-button").show();
     $("#save-button").show();
+
+    $('#datetime24').show();
+    $('#datetime24').combodate();
+    $('#entry-time').hide();
 }
 
 function delete_entry(e) {
@@ -62,6 +68,10 @@ function close_edit(e) {
     $("#delete-button").hide();
     $("#cancel-button").hide();
     $("#save-button").hide();
+
+    $('#datetime24').combodate('destroy');
+    $('#datetime24').hide();
+    $('#entry-time').show();
 }
 
 function save(e) {

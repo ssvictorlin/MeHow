@@ -37,6 +37,7 @@ div.ui-datepicker td {
 	font-size: 5vw;
 	margin-top: 5px;
 	display: inline-block;
+    width: 100%;
 }
 
 .entry {
