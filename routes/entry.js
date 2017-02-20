@@ -15,7 +15,8 @@ function month2Digit(date) {
 }
 
 exports.viewEntry = function(req, res){
-	var context = { "memory": "", "emojis": require('../emojis.json')};
+	var emojis = require('../emojis.json');
+	var context = { "memory": "", "emojis": emojis};
 
 	for (var i = 0; i < memories.memories.length; i++) {
 		if (memories.memories[i].id == req.params.id) {
@@ -28,9 +29,10 @@ exports.viewEntry = function(req, res){
 	context.memory.date = index.monthToString(context.memory.date);
 	context.memory.date = month2Digit(context.memory.date);
 	context.memory.time = index.timeToString(context.memory.time);
-	for (var i = 0; i < context.emojis.length; i++) {
-		if (context.memory.emoji == context.emojis[i].id) {
-			context.memory.emojiImageURL = context.emojis[i].imageURL;
+
+	for (var i = 0; i < emojis.emojis.length; i++) {
+		if (context.memory.emoji == emojis.emojis[i].id) {
+			context.memory.emojiImageURL = emojis.emojis[i].imageURL;
 			break;
 		}
 	}
