@@ -37,6 +37,15 @@
 			<div class="emoji-block">
 				<img src="{{memory.emojiImageURL}}" alt="" class="emoji" id="entry-emoji" data-toggle="modal">
 			</div>
+			<!-- {{#if audioURL}} -->
+				<div class="audioInMemrory">
+					<audio id="player" src="/audio/data/2.mp3"></audio>
+			    	<img class="audioButton"onclick="document.getElementById('player').pause();document.getElementById('player').currentTime = 0;" src="images/stop.png"></img>
+			    	<img class="audioButton"onclick="document.getElementById('player').pause()" src="images/pause.png"></img>
+		    		<img class="audioButton" onclick="document.getElementById('player').play()" src="images/play.png"></img>
+				</div>
+			<!-- {{/if}} -->
+
 			<img src="{{memory.imageURL}}" class="entry-img" id="entry-image" data-toggle="modal">
 			<textarea class="edit-text-entry" id="edit-text" disabled>{{memory.memo}}</textarea>
 		</div>

@@ -14,7 +14,17 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
+    <![endif]-->      
+        <script>
+		(function(p,u,s,h,x){p.pushpad=p.pushpad||function(){(p.pushpad.q=p.pushpad.q||[]).push(arguments)};h=u.getElementsByTagName('head')[0];x=u.createElement('script');x.async=1;x.src=s;h.appendChild(x);})(window,document,'https://pushpad.xyz/pushpad.js');
+		pushpad('init', 2931);
+		pushpad('subscribe', function (bool) { 
+			if (bool) {
+			} else {
+				$("#unsubscribeButton").fadeOut();
+			}
+		});
+	</script>  
 </head>
 
 <body>
@@ -32,7 +42,11 @@
 		<div class="entry clearfix">
 			  <input type="text" name="fname" placeholder="What's your name?"><br>
 		</div>
-		
+
+		<div>
+			<!-- <button id="subscribeButton" onclick="pushpad('subscribe'); alert('Subscribe Success!!'); console.log(isSubscribed);">Subscribe</button> -->
+			<button id="unsubscribeButton" onclick="pushpad('unsubscribe'); alert('Unsubscribe Success!!');$(this).fadeOut()">Unsubscribe</button>
+		</div>
 	</div>
 
 

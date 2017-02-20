@@ -177,10 +177,17 @@ img {
     z-index: 1;
 }
 
+.audioButton{
+    width: 10%;
+    height: 10%;
+    float: right;
+}
+
+/**/
+
 /*table, th, td {*/
    /*border: 1px solid black;*/
 /*}*/
-
 #emojiTableAtAdd{
     width: 100%;
 	border-radius: 25px;
@@ -189,6 +196,7 @@ img {
     text-align: left;
     margin-bottom: 10px;
 }
+
 
 .selected{
 	border-radius: 10px;

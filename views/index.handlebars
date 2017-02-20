@@ -41,6 +41,9 @@
 					<div class="emoji-block">
 						<img src="{{emojiImageURL}}" alt="" class="emoji">
 						<div class="index-time">{{time.hour}}:{{time.minute}}</div>
+							{{#if audioURL}}
+								<img src="/images/nonemptyTape.png" class="emoji">
+							{{/if}}
 					</div>
 					<img src="{{imageURL}}" alt="" class="index-img">
 					<div class=" text-entry text-entry-short"> 

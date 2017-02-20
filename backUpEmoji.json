@@ -1,6 +1,96 @@
 {
 	"backupEmojis":[
 		{
+			"id": "emoji_19",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f619.png"
+		},
+		{
+			"id": "emoji_20",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f620.png"
+		},
+		{
+			"id": "emoji_21",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f621.png"
+		},
+		{
+			"id": "emoji_22",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f622.png"
+		},
+		{
+			"id": "emoji_23",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f623.png"
+		},
+		{
+			"id": "emoji_24",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f624.png"
+		},
+		{
+			"id": "emoji_25",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f625.png"
+		},
+		{
+			"id": "emoji_26",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f626.png"
+		},
+		{
+			"id": "emoji_27",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f627.png"
+		},
+		{
+			"id": "emoji_28",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f628.png"
+		},
+		{
+			"id": "emoji_29",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f629.png"
+		},
+		{
+			"id": "emoji_30",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f630.png"
+		},
+		{
+			"id": "emoji_31",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f631.png"
+		},
+		{
+			"id": "emoji_32",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f632.png"
+		},
+		{
+			"id": "emoji_33",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f633.png"
+		},
+		{
+			"id": "emoji_34",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f634.png"
+		},
+		{
+			"id": "emoji_35",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f635.png"
+		},
+		{
+			"id": "emoji_36",
+			"description": "Happy Face",
+			"imageURL": "/images/emoji/1f636.png"
+		},
+		{
 			"id": "emoji_37",
 			"description": "Happy Face",
 			"imageURL": "/images/emoji/1f637.png"
