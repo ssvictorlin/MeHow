@@ -1,0 +1,45 @@
+#calendar-button {
+	float: right;
+}
+
+div.ui-datepicker {
+	width: 100%; /*what ever width you want*/
+}
+
+div.ui-datepicker td {
+	text-align: center;
+}
+
+.text-entry {
+	float: left;
+	margin-top: 5px;
+}
+
+.text-entry-short p {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+}
+
+.add-button {
+	position: fixed;
+    bottom: 5px;
+    right: 5px;
+	float: right;
+}
+
+.add-button:active {
+  transform: translateY(3px);
+}
+
+.index-img {
+    width: 75%;
+    float: right;
+}
+
+.index-time {
+	width: 100%;
+	font-size: 5vw;
+	text-align: center;
+}

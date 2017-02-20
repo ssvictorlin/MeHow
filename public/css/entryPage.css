@@ -1,0 +1,34 @@
+.emoji-table{
+    width: 100%;
+}
+
+#edit-button {
+	width: 72px;
+	float: right;
+}
+
+.edit-text-entry {
+	width: 100%;
+	height: auto;
+	resize: none;
+	margin-top: 5px;
+    overflow-y: auto;
+	padding: 5px;
+    font-size: 20px;
+    /*font-size: 4vw;*/
+}
+
+.edit-text-entry[disabled] {
+	background-color: #FFFFFF;
+	border: none;
+	color: #000000;
+}
+
+.inputShadow{
+	box-shadow: 2px 2px 2px 0px #dddddd;
+    border: 1px solid #000000;
+}
+
+.entry-img {
+    width: 75%;
+}

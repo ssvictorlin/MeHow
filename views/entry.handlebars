@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/css/introHCI.css" rel="stylesheet">
+	<link href="/css/global.css" rel="stylesheet">
+	<link href="/css/entryPage.css" rel="stylesheet">
 	<!-- this is a comment in HTML -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -25,7 +26,7 @@
 		<img src="/images/edit-icon.png" class="icon" id="edit-button">
 	</header>
 	<div class="container">
-		<div class="time-bar" >
+		<div class="time-bar">
 			<input id="datetime24" data-format="HH:mm MM-DD-YYYY" data-template="HH : mm MM / DD / YYYY" name="datetime" value="{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.month}}-{{memory.date.day}}-{{memory.date.year}}" type="text">
 			<p id="entry-time">{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.weekday}} {{memory.date.monthText}} {{memory.date.day}}, {{memory.date.year}}</p>
 		</div>
@@ -36,9 +37,7 @@
 			<div class="emoji-block">
 				<img src="{{memory.emojiImageURL}}" alt="" class="emoji" id="entry-emoji" data-toggle="modal">
 			</div>
-			<a href="">
-				<img src="{{memory.imageURL}}" class="entry-image" id="entry-image" data-toggle="modal" data-target="#image-modal">
-			</a>
+			<img src="{{memory.imageURL}}" class="entry-img" id="entry-image" data-toggle="modal" data-target="#image-modal">
 			<textarea class="edit-text-entry" id="edit-text" disabled>{{memory.memo}}</textarea>
 		</div>
 
@@ -96,7 +95,7 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/entry.js"></script>
+	<script src="/js/entryPage.js"></script>
 	<script src="/js/moment.js"></script>
 	<script src="/js/combodate.js"></script>
 

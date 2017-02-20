@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/css/introHCI.css" rel="stylesheet">
+	<link href="/css/global.css" rel="stylesheet">
+	<link href="/css/indexPage.css" rel="stylesheet">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<!-- this is a comment in HTML -->
 	
@@ -39,9 +40,9 @@
 				<a href="/entry/{{id}}">
 					<div class="emoji-block">
 						<img src="{{emojiImageURL}}" alt="" class="emoji">
-						<div class="time">{{time.hour}}:{{time.minute}}</div>
+						<div class="index-time">{{time.hour}}:{{time.minute}}</div>
 					</div>
-					<img src="{{imageURL}}" alt="" class="img">
+					<img src="{{imageURL}}" alt="" class="index-img">
 					<div class=" text-entry text-entry-short"> 
 						<p>{{memo}}</p>
 					</div>
@@ -58,6 +59,6 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/introHCI.js"></script>
+	<script src="js/indexPage.js"></script>
 </body>
 </html>
