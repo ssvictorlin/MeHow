@@ -27,7 +27,7 @@
 <body>
 	<header id="main-nav-bar">
 		<a href="/index" id="back-button">
-			<img src="images/back-icon-128.png" class="icon">
+			<img src="/images/back-icon-128.png" class="icon">
 		</a>
 	</header>
 	<div class="container">
@@ -62,9 +62,9 @@
 
 		<div style="margin: 10px;">
 			<table style="width:100%">
-				<td><img src="images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
-				<td><img src="images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
-				<td><img src="images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
+				<td><img src="/images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
+				<td><img src="/images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
+				<td><img src="/images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
 			</table>
 		</div>
 
@@ -100,9 +100,10 @@
               <div class="modal-body">
       			<video id="video" width="100%" height="auto" autoplay></video>
       			<div class="button-row">
-	      			<button id="snap" class="camera-modal-button">Snap Photo</button>
-					<button id="gallery" class="camera-modal-button">Choose From Gallery</button>
+	      			<img id="snap" src="/images/camera_button.png" class="icon">
+					<img id="gallery" src="/images/gallery_button.png" class="icon">
       			</div>
+			    <input id="file-input" type="file" accept="image/*" />
 				
               </div>
             </div>

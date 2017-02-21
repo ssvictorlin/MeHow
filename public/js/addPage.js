@@ -53,6 +53,17 @@ $(document).ready(function() {
         goToBottom();
     });
 
+    $("#gallery").click(function(){
+        console.log("gallery clicked");
+        var x = document.createElement("INPUT");
+        x.setAttribute("type", "file");
+        x.setAttribute("accept", "image/*");
+        x.click();
+        x.onchange = function() {
+            readImage(this);
+        };
+    });
+
     $("#recorderButton").click(function(){
     	// console.log("recorderButton clicked");
         $('#audioAreaAtAdd').toggle();
@@ -71,4 +82,27 @@ function goToBottom() {
 	// var viewportHeight=window.innerHeight;
 	// window.scrollTo(0,documentHeight-viewportHeight);
     window.scrollTo(0,document.body.scrollHeight);
+}
+
+function readImage(input) {
+    console.log("change image!!");
+    if (input.files && input.files[0]) {
+        console.log("draw image!!");
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = new Image();
+            img.onload = function(){
+                var canvas = document.getElementById('camera-canvas');
+                var context = canvas.getContext('2d');
+                console.log(canvas.width + " " + canvas.height);
+                canvas.height = canvas.width / img.width * img.height;
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    $('#camera-modal').modal('toggle');
+    goToBottom();
 }

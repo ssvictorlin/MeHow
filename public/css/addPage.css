@@ -41,3 +41,17 @@ table td {
     width: 80%;
     height: auto;
 }
+
+#file-input {
+    display: none;
+}
+
+/*.button-row label {*/
+label {
+    display: inline-block;
+    /*width: 50%;*/
+}
+
+.camera-buttons {
+    width: 120px;
+}
