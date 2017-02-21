@@ -70,7 +70,7 @@
 						document.writeln("<tr>");
 						var cnt=0;	
 						{{#each emojis.emojis}}
-							document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emojis" width=40px height=40px></td></div>');	
+							document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emojis"></td></div>');	
 							cnt++;
 							if(cnt%6==0){
 								document.writeln("</tr><tr>");

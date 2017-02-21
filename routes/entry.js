@@ -4,15 +4,7 @@
  */
 
 var memories = require('../memories.json');
-var index = require('./index');
-
-function month2Digit(date) {
-	if (date.month / 10 < 1)
-		date.month = ("0" + date.month).slice(-2);
-	if (date.day / 10 < 1)
-		date.day = ("0" + date.day).slice(-2);
-	return date;
-}
+var tools = require('./tools');
 
 exports.viewEntry = function(req, res){
 	var emojis = require('../emojis.json');
@@ -25,10 +17,10 @@ exports.viewEntry = function(req, res){
 		}
 	}
 	// deal with date/time string
-	context.memory.date = index.addWeekday(context.memory.date);
-	context.memory.date = index.monthToString(context.memory.date);
-	context.memory.date = month2Digit(context.memory.date);
-	context.memory.time = index.timeToString(context.memory.time);
+	context.memory.date = tools.addWeekday(context.memory.date);
+	context.memory.date = tools.monthToString(context.memory.date);
+	context.memory.date = tools.month2Digit(context.memory.date);
+	context.memory.time = tools.timeToString(context.memory.time);
 
 	for (var i = 0; i < emojis.emojis.length; i++) {
 		if (context.memory.emoji == emojis.emojis[i].id) {

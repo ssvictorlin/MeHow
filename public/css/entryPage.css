@@ -36,3 +36,9 @@
 #file-input {
     display: none;
 }
+
+#delete-button {
+	padding: 10px;
+	background-color: #ff0000;
+	margin-left: 10px;
+}

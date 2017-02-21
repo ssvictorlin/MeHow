@@ -79,7 +79,8 @@ function close_edit(e) {
 
     $('#datetime24').combodate('destroy');
     $('#datetime24').hide();
-    console.log($('#datetime24').val());
+    // console.log($('#datetime24').val());
+    parseCombodate($('#datetime24').val());
     $('#entry-time').show();
 }
 
@@ -145,4 +146,16 @@ function readImage(input) {
     }
 
     $('#camera-modal').modal('toggle');
+}
+
+function parseCombodate(input) {
+    console.log("parse " + input);
+    var time = {"hour": "", "minute": ""}, date = {"month": "", "day": "", "year": ""};
+    time.hour = parseInt(input.substr(0, 2));
+    time.minute = parseInt(input.substr(3, 2));
+    date.month = parseInt(input.substr(6, 2));
+    date.day = parseInt(input.substr(9, 2));
+    date.year = parseInt(input.substr(12, 4));
+    console.log(time);
+    console.log(date);
 }
