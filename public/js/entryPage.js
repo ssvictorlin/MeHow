@@ -22,6 +22,10 @@ function initializePage() {
     $(".emojis").click( choose_emoji );
     $("#emoji-modal").modal("hide");
 
+    $("#entry-image").attr("data-target", "#image-modal");
+    $("#gallery").click( readImageFile );
+    $("#snap").click( snapImage );
+
     $('#datetime24').hide();
 }
 
@@ -35,6 +39,7 @@ function edit(e) {
     $("#entry-image").addClass("inputShadow");
 
     $("#entry-emoji").attr("data-target", "#emoji-modal");
+    $("#entry-image").attr("data-target", "#camera-modal");
 
     $("#edit-button").hide();
     $("#delete-button").show();
@@ -44,6 +49,8 @@ function edit(e) {
     $('#datetime24').show();
     $('#datetime24').combodate();
     $('#entry-time').hide();
+
+    previewCamera();
 }
 
 function delete_entry(e) {
@@ -63,6 +70,7 @@ function close_edit(e) {
     $("#edit-text").height( $("#edit-text")[0].scrollHeight );
 
     $("#entry-emoji").attr("data-target", "");
+    $("#entry-image").attr("data-target", "#image-modal");
 
     $("#edit-button").show();
     $("#delete-button").hide();
@@ -86,4 +94,55 @@ function choose_emoji(e) {
     e.preventDefault();
     $("#emoji-modal").modal("toggle");
     $("#entry-emoji").attr("src", $(this).attr("src"));
+}
+
+function previewCamera() {
+    var video = document.getElementById('video');
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+        });
+    }
+    video.play();
+}
+
+function snapImage() {
+    console.log("snap clicked");
+    $('#camera-modal').modal('toggle');
+    var canvas = document.createElement('canvas');
+    canvas.setAttribute("width", $("#entry-image").width);
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
+    canvas.setAttribute("height", canvas.width / video.videoWidth * video.videoHeight);
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    $("#entry-image").attr("src", canvas.toDataURL(""));
+    // $("#camera-canvas").show();
+}
+
+function readImageFile() {
+    console.log("gallery clicked");
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", "file");
+    x.setAttribute("accept", "image/*");
+    x.click();
+    x.onchange = function() {
+        readImage(this);
+    };
+}
+
+function readImage(input) {
+    console.log("change image!!");
+    if (input.files && input.files[0]) {
+        console.log("draw image!!");
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = document.getElementById('entry-image');
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    $('#camera-modal').modal('toggle');
 }

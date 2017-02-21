@@ -37,7 +37,7 @@
 			<div class="emoji-block">
 				<img src="{{memory.emojiImageURL}}" alt="" class="emoji" id="entry-emoji" data-toggle="modal">
 			</div>
-			<img src="{{memory.imageURL}}" class="entry-img" id="entry-image" data-toggle="modal" data-target="#image-modal">
+			<img src="{{memory.imageURL}}" class="entry-img" id="entry-image" data-toggle="modal">
 			<textarea class="edit-text-entry" id="edit-text" disabled>{{memory.memo}}</textarea>
 		</div>
 
@@ -84,6 +84,26 @@
             </div>
           </div>
         </div>  
+
+        <div class="modal fade" id="camera-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
+              </div>
+              <div class="modal-body">
+      			<video id="video" width="100%" height="auto" autoplay></video>
+      			<div class="button-row">
+	      			<img id="snap" src="/images/camera_button.png" class="icon">
+					<img id="gallery" src="/images/gallery_button.png" class="icon">
+      			</div>
+			    <input id="file-input" type="file" accept="image/*" />
+				
+              </div>
+            </div>
+          </div>
+        </div>
 	</div>
 	<a href="" id="delete-button">Delete</a>
 
