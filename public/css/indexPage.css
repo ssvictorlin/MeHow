@@ -2,8 +2,13 @@
 	float: right;
 }
 
+#datepicker {
+    position: fixed;
+    width: 100%;
+}
+
 div.ui-datepicker {
-	width: 100%; /*what ever width you want*/
+	width: 100%; 
 }
 
 div.ui-datepicker td {

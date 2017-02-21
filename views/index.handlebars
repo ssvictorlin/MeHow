@@ -32,7 +32,7 @@
 	<div class="container">
 		{{#each memories}}
 		{{#if date.visible}}
-			<div class="time-bar">
+			<div class="time-bar" id={{id}}>
 				<p>{{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p>
 			</div>
 		{{/if}}

@@ -1,11 +1,14 @@
 /* global css setting */
-
 body {
-
+    overflow-y: auto;
+    padding-top: 72px;
 }
 
 header {
-	background-color: #b3d9ff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #b3d9ff;
 }
 
 img {
