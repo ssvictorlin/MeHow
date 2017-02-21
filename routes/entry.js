@@ -2,7 +2,6 @@
 /*
  * GET entry page.
  */
-
 var memories = require('../memories.json');
 var tools = require('./tools');
 
