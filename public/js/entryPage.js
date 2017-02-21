@@ -82,6 +82,9 @@ function close_edit(e) {
     // console.log($('#datetime24').val());
     parseCombodate($('#datetime24').val());
     $('#entry-time').show();
+
+    var video = document.getElementById('video');
+    // video.pause();
 }
 
 function save(e) {
