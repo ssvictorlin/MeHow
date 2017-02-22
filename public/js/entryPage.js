@@ -1,5 +1,15 @@
 'use strict';
 
+var current_data = {
+    "memo": "",
+    "date": {"month": "", "day": "", "year": ""},
+    "time": {"hour": "", "minute": ""},
+    "imageURL": "",
+    "emoji": "",
+    "emojiImageURL": "",
+    "audioURL": ""
+};
+
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
     initializePage();
@@ -27,6 +37,24 @@ function initializePage() {
     $("#snap").click( snapImage );
 
     $('#datetime24').hide();
+    console.log($("#entry-container").data("entryid"));
+
+    // save initial data
+    current_data.memo = $("#edit-text").val();
+    current_data.time.hour = $("#entry-time").text().substr(0, 2);
+    current_data.time.minute = $("#entry-time").text().substr(3, 2);
+    current_data.date.month = $("#entry-time").data("month");
+    current_data.date.day = $("#entry-time").text().substr(15, 2);
+    current_data.date.year = $("#entry-time").text().substr(19, 4);
+    current_data.imageURL = $("#entry-image").attr("src");
+    current_data.emoji = $("#entry-emoji").data("emojiid");
+    current_data.emojiImageURL = $("#entry-emoji").attr("src");
+    // current_data.audioURL;
+    console.log(current_data.memo);
+    console.log(current_data.time);
+    console.log(current_data.date);
+    console.log(current_data.imageURL);
+    console.log(current_data.emoji);
 }
 
 function edit(e) {
@@ -79,25 +107,47 @@ function close_edit(e) {
 
     $('#datetime24').combodate('destroy');
     $('#datetime24').hide();
-    // console.log($('#datetime24').val());
-    parseCombodate($('#datetime24').val());
     $('#entry-time').show();
 
-    var video = document.getElementById('video');
-    // video.pause();
+    show_content();
 }
 
 function save(e) {
     e.preventDefault();
     console.log("save!!");
+    current_data.memo = $("#edit-text").val();
+    current_data.time.hour = $('#datetime24').val().substr(0, 2);
+    current_data.time.minute = $('#datetime24').val().substr(3, 2);
+    current_data.date.month = $('#datetime24').val().substr(6, 2);
+    current_data.date.day = $('#datetime24').val().substr(9, 2);
+    current_data.date.year = $('#datetime24').val().substr(12, 4);
+    current_data.imageURL = $("#entry-image").attr("src");
+    current_data.emoji = $("#entry-emoji").data("emojiid");
+    current_data.emojiImageURL = $("#entry-emoji").attr("src");
+    // current_data.audioURL;
+    console.log(current_data.memo);
+    console.log(current_data.time);
+    console.log(current_data.date);
+    console.log(current_data.imageURL);
+    console.log(current_data.emoji);
+    console.log(current_data.emojiImageURL);
     close_edit(e);
-    
 }
 
 function choose_emoji(e) {
     e.preventDefault();
     $("#emoji-modal").modal("toggle");
+    $("#entry-emoji").data("emojiid", $(this).attr("id"));
     $("#entry-emoji").attr("src", $(this).attr("src"));
+}
+
+function show_content() {
+    $("#edit-text").val(current_data.memo);
+    $("#edit-text").height( $("#edit-text")[0].scrollHeight );
+    $("#entry-time").text(current_data.time.hour + ":" + current_data.time.minute + " " + getWeekday(current_data.date) + " " + monthToString(current_data.date.month) + " " + current_data.date.day + ", " + current_data.date.year);
+    $("#entry-image").attr("src", current_data.imageURL);
+    $("#entry-emoji").attr("src", current_data.emojiImageURL);
+    // current_audioURL;
 }
 
 function previewCamera() {
@@ -122,7 +172,6 @@ function snapImage() {
     canvas.setAttribute("height", canvas.width / video.videoWidth * video.videoHeight);
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     $("#entry-image").attr("src", canvas.toDataURL(""));
-    // $("#camera-canvas").show();
 }
 
 function readImageFile() {
@@ -151,14 +200,54 @@ function readImage(input) {
     $('#camera-modal').modal('toggle');
 }
 
-function parseCombodate(input) {
-    console.log("parse " + input);
-    var time = {"hour": "", "minute": ""}, date = {"month": "", "day": "", "year": ""};
-    time.hour = parseInt(input.substr(0, 2));
-    time.minute = parseInt(input.substr(3, 2));
-    date.month = parseInt(input.substr(6, 2));
-    date.day = parseInt(input.substr(9, 2));
-    date.year = parseInt(input.substr(12, 4));
-    console.log(time);
+function monthToString(month) {
+    month = parseInt(month);
+    switch(month) {
+        case 1:
+            return "Mon";
+        case 2:
+            return "Feb";
+        case 3:
+            return "Mar";
+        case 4:
+            return "Apr";
+        case 5:
+            return "May";
+        case 6:
+            return "Jun";
+        case 7:
+            return "Jul";
+        case 8:
+            return "Aug";
+        case 9:
+            return "Sep";
+        case 10:
+            return "Oct";
+        case 11:
+            return "Nov";
+        case 12:
+            return "Dec";
+    }
+}
+
+function getWeekday(date) {
     console.log(date);
+    var day = new Date(date.year, date.month - 1, date.day);
+    console.log(day.getDay());
+    switch(day.getDay()) {
+        case 1:
+            return "Mon.";
+        case 2:
+            return "Tue.";
+        case 3:
+            return "Wed.";
+        case 4:
+            return "Thu.";
+        case 5:
+            return "Fri.";
+        case 6:
+            return "Sat.";
+        case 0:
+            return "Sun.";
+    }
 }
