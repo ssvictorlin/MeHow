@@ -45,4 +45,3 @@ function toTitleCase(str) {
 function redirect() {
     setTimeout(function(){ window.location="/index"; } , 3000);
 }
-
