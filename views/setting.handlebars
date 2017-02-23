@@ -35,14 +35,17 @@
 	</header>
 	<div class="container">
 
-		<h1> You are looking at a setting page </h1>
-		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
-		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
-		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
+		<h2> Setting </h2>
 		<div class="entry clearfix">
-			  <input type="text" name="fname" placeholder="What's your name?"><br>
+			<h4> My name is: </h4>
+			<input type="text" name="fname" value="Victor"><br>
+			<h4> first reminder: </h4>
+			<input type="text" id="time1" data-format="HH:mm" data-template="HH : mm" name="datetime" value="08:00"><br>
+			<h4> second reminder: </h4>
+			<input type="text" id="time2" data-format="HH:mm" data-template="HH : mm" name="datetime" value="12:30"><br>
+			<h4> third reminder: </h4>
+			<input type="text" id="time3" data-format="HH:mm" data-template="HH : mm" name="datetime" value="19:00">
 		</div>
-
 		<div>
 			<!-- <button id="subscribeButton" onclick="pushpad('subscribe'); alert('Subscribe Success!!'); console.log(isSubscribed);">Subscribe</button> -->
 			<button id="unsubscribeButton" onclick="pushpad('unsubscribe'); alert('Unsubscribe Success!!');$(this).fadeOut()">Unsubscribe</button>
@@ -52,5 +55,8 @@
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/moment.js"></script> 
+	<script src="js/combodate.js"></script>
+	<script type="text/javascript" src="js/settingPage.js"></script>
 </body>
 </html>
