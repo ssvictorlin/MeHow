@@ -48,6 +48,8 @@ $(document).ready(function() {
         var context = canvas.getContext('2d');
         var video = document.getElementById('video');
         canvas.height = canvas.width / video.videoWidth * video.videoHeight;
+        context.translate(canvas.width, 0);
+        context.scale(-1, 1);
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         $("#camera-canvas").show();
         goToBottom();

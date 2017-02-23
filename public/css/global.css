@@ -125,3 +125,7 @@ img {
     cursor: pointer;
     z-index: 1;
 }
+
+video {
+    transform: rotateY(180deg);
+}
