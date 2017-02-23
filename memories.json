@@ -12,7 +12,7 @@
 					"year": 2017
 				},
 			"emoji": "emoji_1",
-			"imageURL": "http://lorempixel.com/160/100/",
+			"imageURL": "/images/lorempixel1.jpeg",
 			"memo": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 			"audioURL": "/audio/data/1.mp3"
 		},
@@ -28,7 +28,7 @@
 					"year": 2017
 				},
 			"emoji": "emoji_5",
-			"imageURL": "http://lorempixel.com/160/100/",
+			"imageURL": "/images/lorempixel2.jpeg",
 			"memo": "Love is friendship that has caught fire. It is quiet understanding, mutual confidence, sharing and forgiving. It is loyalty through good and bad times. It settles for less than perfection and makes allowances for human weaknesses.",
 			"audioURL" : ""		
 		},
@@ -44,7 +44,7 @@
 					"year": 2017
 				},
 			"emoji": "emoji_10",
-			"imageURL": "http://lorempixel.com/160/100/",
+			"imageURL": "/images/lorempixel3.jpeg",
 			"memo": "Some days are just bad days, that's all. You have to experience sadness to know happiness, and I remind myself that not every day is going to be a good day, that's just the way it is!",
 			"audioURL": "/audio/data/2.mp3"
 		},
@@ -59,8 +59,8 @@
 					"month": 12,
 					"year": 2016
 				},
-			"emoji": "emoji_20",
-			"imageURL": "http://lorempixel.com/160/100/",
+			"emoji": "emoji_18",
+			"imageURL": "/images/no-image.jpg",
 			"memo": "",
 			"audioURL": ""		
 		}
