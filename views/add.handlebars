@@ -33,7 +33,8 @@
 	</header>
 	<div class="container">
 		<div class="time-bar">
-			<p>Sat. Feb 10, 2017</p>
+			<input id="datetime24" data-format="HH:mm MM-DD-YYYY" data-template="HH : mm MM / DD / YYYY" name="datetime" value="{{time.hour}}:{{time.minute}} {{date.month}}-{{date.day}}-{{date.year}}" type="text">
+			<!-- <p id="entry-time" data-month="{{date.month}}">{{time.hour}}:{{time.minute}} {{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p> -->
 		</div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
@@ -48,7 +49,7 @@
 				<script>
 					document.writeln("<tr>");
 					var cnt=0;	
-					{{#each emojis}}
+					{{#each emojis.emojis}}
 						document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emoji_ADDPAGE"></td></div>');	
 						cnt++;
 						if(cnt%6==0){
@@ -80,7 +81,7 @@
         	<div id="buttons">
           		<button class="record">Record</button>
           		<button class="stop">Stop</button>
-        		</div>
+        	</div>
       		</section>
       		<section class="sound-clips" id="sound-section" style="margin-bottom: 60px">
 
@@ -112,8 +113,8 @@
         </div>
 
 		<div class="button-row">
-			<a href="/entry" id="cancel-button">Cancel</a>
-			<a href="" id="save-button">Save</a>
+			<a href="/index" id="cancel-button">Cancel</a>
+			<a href="/index" id="save-button">Save</a>
 		</div>
 	</div>
 
@@ -121,6 +122,8 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/addPage.js"></script>
+	<script src="/js/moment.js"></script>
+	<script src="/js/combodate.js"></script>
 		<!-- Audio Zone -->
     <script src="/audio/scripts/install.js"></script>  
     <!-- Below is your custom application script -->
