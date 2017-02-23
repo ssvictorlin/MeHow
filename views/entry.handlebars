@@ -34,21 +34,23 @@
 		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
 		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
 		
+
+
 		<div class="entry clearfix">
 			<div class="emoji-block">
 				<img src="{{memory.emojiImageURL}}" alt="" class="emoji" id="entry-emoji" data-toggle="modal" data-emojiid="{{memory.emoji}}">
+				{{#if memory.audioURL}}
+					<audio id="player" src="{{memory.audioURL}}"></audio>
+		    		<img class="audioButton" id="stopButton" src="../images/stop.png"></img>
+		    		<img class="audioButton" id="playButton" src="../images/play.png"></img>
+	    		{{/if}}
 			</div>
-			<!-- {{#if audioURL}} -->
-			<div class="audioInMemrory">
-				<audio id="player" src="/audio/data/2.mp3"></audio>
-		    	<img class="audioButton"onclick="document.getElementById('player').pause();document.getElementById('player').currentTime = 0;" src="images/stop.png"></img>
-		    	<img class="audioButton"onclick="document.getElementById('player').pause()" src="images/pause.png"></img>
-	    		<img class="audioButton" onclick="document.getElementById('player').play()" src="images/play.png"></img>
+			
+			<div>			
+				<img src="{{memory.imageURL}}" class="entry-img" id="entry-image" data-toggle="modal">
+				<textarea class="edit-text-entry" id="edit-text" disabled>{{memory.memo}}</textarea>
 			</div>
-			<!-- {{/if}} -->
 
-			<img src="{{memory.imageURL}}" class="entry-img" id="entry-image" data-toggle="modal">
-			<textarea class="edit-text-entry" id="edit-text" disabled>{{memory.memo}}</textarea>
 		</div>
 
 		<!-- modal -->

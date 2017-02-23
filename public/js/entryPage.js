@@ -37,6 +37,7 @@ function initializePage() {
     $("#snap").click( snapImage );
 
     $('#datetime24').hide();
+
     console.log($("#entry-container").data("entryid"));
 
     // save initial data
@@ -55,6 +56,28 @@ function initializePage() {
     console.log(current_data.date);
     console.log(current_data.imageURL);
     console.log(current_data.emoji);
+
+    $('#playButton').click(audioToggle);
+    $('#stopButton').click(resetMusic);
+}
+
+function resetMusic(e){
+    document.getElementById('player').pause();
+    document.getElementById('player').currentTime = 0;
+    $('#playButton').removeClass("on");
+    $('#playButton').attr("src", "../images/play.png");
+}
+
+function audioToggle(e){
+    if($(this).hasClass("on")){
+        $(this).removeClass("on");
+        document.getElementById('player').pause()
+        $(this).attr("src", "../images/play.png")        
+    }else{
+        $(this).addClass("on");
+        document.getElementById('player').play()
+        $(this).attr("src", "../images/pause.png")
+    }
 }
 
 function edit(e) {

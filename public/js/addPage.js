@@ -9,7 +9,8 @@ $(document).ready(function() {
 		var EmojiId = $(this).attr("id");
 		//Undraw the last one.
 		if(EmojiId!=lastEmojiId)
-			$("#"+lastEmojiId).removeAttr("class","selected");
+             $("#"+lastEmojiId).attr("class","emoji_ADDPAGE");
+
     	//Update EmojiId
     	lastEmojiId = EmojiId;
     	console.log(EmojiId);

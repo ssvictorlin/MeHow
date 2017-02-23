@@ -7,9 +7,9 @@ navigator.getUserMedia = ( navigator.getUserMedia ||
                        navigator.msGetUserMedia);
 
 // set up basic variables for app
-
-var record = document.querySelector('.record');
-var stop = document.querySelector('.stop');
+var recording = false;
+var record = document.getElementById('recordButton');
+// var stop = document.querySelector('.stop');
 var soundClips = document.querySelector('.sound-clips');
 var canvas = document.querySelector('.visualizer');
 
@@ -40,32 +40,41 @@ if (navigator.getUserMedia) {
 
     record.onclick = function() {
 
-      //Edited by Mickie
-    if(soundClips.childElementCount != 0){
-      soundClips.removeChild(soundClips.childNodes[1]);
+        //Edited by Mickie
+        if(soundClips.childElementCount != 0){
+          soundClips.removeChild(soundClips.childNodes[1]);
+        }
+        if(recording==false){
+          mediaRecorder.start();
+          console.log(mediaRecorder.state);
+          console.log("recorder started");
+          record.style.background = "red";
+          record.textContent = "Stop"
+
+          // stop.disabled = false;
+          // record.disabled = false;
+        }else{
+          mediaRecorder.stop();
+          console.log(mediaRecorder.state);
+          console.log("recorder stopped");
+          record.style.background = "";
+          record.style.color = "";
+          record.textContent = "Record"    
+        }
+        recording =!recording;
     }
 
+    //   stop.onclick = function() {
+    //   mediaRecorder.stop();
+    //   console.log(mediaRecorder.state);
+    //   console.log("recorder stopped");
+    //   record.style.background = "";
+    //   record.style.color = "";
+    //   // mediaRecorder.requestData();
 
-      mediaRecorder.start();
-      console.log(mediaRecorder.state);
-      console.log("recorder started");
-      record.style.background = "red";
-
-      stop.disabled = false;
-      record.disabled = true;
-    }
-
-      stop.onclick = function() {
-      mediaRecorder.stop();
-      console.log(mediaRecorder.state);
-      console.log("recorder stopped");
-      record.style.background = "";
-      record.style.color = "";
-      // mediaRecorder.requestData();
-
-      stop.disabled = true;
-      record.disabled = false;
-    }
+    //   stop.disabled = true;
+    //   record.disabled = false;
+    // }
 
     mediaRecorder.onstop = function(e) {
       

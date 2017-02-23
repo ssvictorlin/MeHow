@@ -49,6 +49,7 @@
 				<script>
 					document.writeln("<tr>");
 					var cnt=0;	
+
 					{{#each emojis.emojis}}
 						document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emoji_ADDPAGE"></td></div>');	
 						cnt++;
@@ -72,16 +73,16 @@
 		</div>
 
 		<div class="form-group clearfix">
-	      	<textarea class="form-control" id="textareaAtAdd" rows="2" style="margin-bottom: 50px"></textarea>
+	      	<textarea class="form-control" id="textareaAtAdd" rows="3" style="margin-bottom: 50px"></textarea>
 	    </div>
 
 		<div classs="clearfix" id="audioAreaAtAdd">
 			<section class="main-controls" >
-        	<canvas class="visualizer"></canvas>
-        	<div id="buttons">
-          		<button class="record">Record</button>
-          		<button class="stop">Stop</button>
-        	</div>
+	        	<canvas class="visualizer"></canvas>
+
+	        	<div id="audioButtons">
+	          		<button class="btn btn-info btn-block" id="recordButton">Record</button>
+	        	</div>
       		</section>
       		<section class="sound-clips" id="sound-section" style="margin-bottom: 60px">
 
