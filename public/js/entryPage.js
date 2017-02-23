@@ -170,6 +170,8 @@ function snapImage() {
     var context = canvas.getContext('2d');
     var video = document.getElementById('video');
     canvas.setAttribute("height", canvas.width / video.videoWidth * video.videoHeight);
+    context.translate(canvas.width, 0);
+    context.scale(-1, 1);
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     $("#entry-image").attr("src", canvas.toDataURL(""));
 }
