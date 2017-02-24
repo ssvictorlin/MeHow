@@ -19,7 +19,8 @@ exports.view = function(req, res){
 	db.serialize(function() {
 		db.each("SELECT * FROM memories", function(err, row) {
 			if(err) console.log("read DB error");
-	        var temp = {"id": row.id, "time": {"hour": row.hour, "minute": row.minute}, "date": {"day": row.day, "month": row.month, "year": row.year}, "emoji": row.emoji, "imageURL": row.imageURL, "audioURL": row.audioURL, "memo": row.memo};
+			var temp = tools.copyDBMemory(row);
+	        // var temp = {"id": row.id, "time": {"hour": row.hour, "minute": row.minute}, "date": {"day": row.day, "month": row.month, "year": row.year}, "emoji": row.emoji, "imageURL": row.imageURL, "audioURL": row.audioURL, "memo": row.memo};
 			temp.date = tools.addWeekday(temp.date);
 			temp.date = tools.monthToString(temp.date);
 			temp.time = tools.timeToString(temp.time);
@@ -32,6 +33,8 @@ exports.view = function(req, res){
 			else
 				temp.date.visible = 1;
 			previous_date = temp.date;
+
+			console.log(temp.emoji);
 
 			for (var j = 0; j < emojis.emojis.length; j++) {
 				if (temp.emoji == emojis.emojis[j].id) {
