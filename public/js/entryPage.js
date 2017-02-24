@@ -21,7 +21,10 @@ function initializePage() {
     $("#edit-button").click( edit );
 
     $("#delete-button").hide();
-    $("#delete-button").click( delete_entry );
+    $("#no-delete-button").click( function() {
+        $("#warning-modal").modal("hide");
+    } );
+    $("#yes-delete-button").click( delete_entry );
 
     $("#cancel-button").hide();
     $("#cancel-button").click( close_edit );
@@ -106,7 +109,14 @@ function edit(e) {
 
 function delete_entry(e) {
     e.preventDefault();
-    console.log("delete!!");
+    console.log("delete!!" + $("#entry-container").data("entryid"));
+    $.post("/deleteMemory", {"id": $("#entry-container").data("entryid")})
+    .done(function( data ) {
+        window.location.href = "/index";
+    })
+    .fail(function() {
+        alert( "error" );
+    });
 }
 
 function close_edit(e) {

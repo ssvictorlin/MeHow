@@ -35,12 +35,12 @@ exports.view = function(req, res){
 				temp.date.visible = 1;
 			previous_date = temp.date;
 
-			console.log(temp.emoji);
+			// console.log(temp.emoji);
 
 			for (var j = 0; j < emojis.emojis.length; j++) {
 				if (temp.emoji == emojis.emojis[j].id) {
 					temp.emojiImageURL = emojis.emojis[j].imageURL;
-					console.log(temp.emojiImageURL);
+					// console.log(temp.emojiImageURL);
 					break;
 				}
 			}

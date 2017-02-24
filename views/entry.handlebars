@@ -105,19 +105,37 @@
                  <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
               </div>
               <div class="modal-body">
-      			<video loop id="video" width="100%" height="auto" autoplay></video>
+              	<video loop id="video" width="100%" height="auto" autoplay></video>
       			<div class="button-row">
 	      			<img id="snap" src="/images/camera_button.png" class="icon">
 					<img id="gallery" src="/images/gallery_button.png" class="icon">
       			</div>
 			    <input id="file-input" type="file" accept="image/*" />
-				
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="warning-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
+              </div>
+              <div class="modal-body">
+				<p style="font-size: 4vw;">Are you sure you want to delete this entry?</p>
+              	<div class="button-row">
+              		<button id="no-delete-button">NO</button>
+      				<button id="yes-delete-button">YES</button>
+              	</div>
               </div>
             </div>
           </div>
         </div>
 	</div>
-	<a href="" id="delete-button">Delete</a>
+
+	<button id="delete-button" data-toggle="modal" data-target="#warning-modal">Delete</button>
 
 	<div class="button-row">
 		<a href="/" id="cancel-button">Cancel</a>
