@@ -8,7 +8,8 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
 var moment = require('moment');
-var fs = require('fs')
+var fs = require('fs');
+var sqlite3 = require('sqlite3');
 
 var login = require('./routes/login');
 
@@ -19,6 +20,8 @@ var entry = require('./routes/entry');
 var add = require('./routes/add');
 
 var setting = require('./routes/setting');
+
+var database = require('./routes/database');
 
 // Example route
 // var user = require('./routes/user');
