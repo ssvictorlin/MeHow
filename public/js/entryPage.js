@@ -2,7 +2,9 @@
 //Used for audio
 var recording = false;
 var audioRecord ="";
+
 var noImageURL = "/images/no-image.jpg";
+var audioData ="";
 
 var current_data = {
     "memo": "",
@@ -45,14 +47,24 @@ function initializePage() {
 
     $('#datetime24').hide();
 
-    $('#askForRecordButton').hide();
     $('.rm-element-button').hide();
+    $('.edit-audio-control').hide();
     $('#playButton').click(audioToggle);
-    $('#stopButton').click(resetMusic);
-    $('#askForRecordButton').click(recordAudio);
+    $('#stopButton').click(resetMusic);    
+    $('#askForRecordButton').click(overwrite_warning);
     $('#audio-ok-button').hide();
+<<<<<<< HEAD
 
+=======
+>>>>>>> fix bugs, change design of rrecorder on editpage
     $(".rm-element-button").click(removeElement);
+    var player = document.getElementById('player');
+    player.onended = function(){
+        console.log("Music ended");
+        $('#playButton').removeClass("on");
+        $('#playButton').attr("src", "../images/play.png");
+    }
+
 
     console.log($("#entry-container").data("entryid"));
 
@@ -74,9 +86,7 @@ function initializePage() {
     console.log(current_data.emoji);
     console.log(current_data.audioURL);
 
-    if(current_data.audioURL){
-
-    }else{
+    if(!current_data.audioURL){
         $(".audioButton").hide()
     }
 }
@@ -127,6 +137,15 @@ function edit(e) {
     $("#askForRecordButton").show();
 
     $(".rm-element-button").show();
+    $(".edit-audio-control").show();
+    if(current_data.audioURL==""){
+        $("#audio-rm-button").hide();
+        $("#audio-record-icon").hide();
+    }else{
+        $("#audio-rm-button").show();
+        $("#audio-record-icon").show();
+    }
+    audioRecord = $('#player').attr("src");
 
     previewCamera();
 }
@@ -167,9 +186,9 @@ function close_edit(e) {
     $('#datetime24').hide();
     $('#entry-time').show();
 
-    $("#askForRecordButton").hide();
-
+    // $("#askForRecordButton").hide();
     $(".rm-element-button").hide();
+    $(".edit-audio-control").hide();
 
     show_content();
     //The code should be placed below show_contect;
@@ -352,7 +371,8 @@ function removeElement(e){
         console.log("remove audio");
         $('#playButton').hide();
         $('#stopButton').hide();
-        $('#askForRecordButton').hide();
+        $('#audio-record-icon').hide();
+        $('#audio-rm-button').hide();
         var player = document.getElementById('player');
         player.src = '';
         audioRecord = "";
@@ -373,15 +393,33 @@ function removeElement(e){
 }
 
 
+function overwrite_warning(e){
+    if(!audioRecord){
+        $('#audio-ok-button').hide();
+        recordAudio(e);    
+    }else{
+        $("#audio-warning-modal").modal("show");
+    }
+    var  okButton = document.getElementById('ok-overwrite-button');
+    okButton.onclick = function(e){
+        $("#audio-warning-modal").modal("hide");   
+        recordAudio(e);
+    }
+
+}
+
+
 
 function recordAudio(e){
 
+    // if(!audioRecord){
+    //     $('#audio-ok-button').hide();    
+    // }else{
+    //     $("#warning-modal").modal("show");
+    // }
+
     $("#recorder-modal").modal("toggle");
-    if(audioRecord){
-        
-    }else{
-        $('#audio-ok-button').hide();
-    }
+
 
     navigator.getUserMedia = ( navigator.getUserMedia ||
                        navigator.webkitGetUserMedia ||
@@ -428,6 +466,7 @@ function recordAudio(e){
             var clipLabel = document.createElement('p');
             var audio = document.createElement('audio');
             var deleteButton = document.createElement('button');
+            var modelExit = document.getElementById('recorder-modal-exit-button');
             clipContainer.classList.add('clip');
             audio.setAttribute('controls', '');
             deleteButton.textContent = 'Delete';
@@ -452,16 +491,27 @@ function recordAudio(e){
                 audioRecord = reader.result;         
             };
 
+            modelExit.onclick = function(e){
+                deleteButton.click();
+            }
+
             deleteButton.onclick = function(e) {
                 audioRecord = "";
                 $('#audio-ok-button').hide();
-                e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+                if(e.target.parentNode.parentNode!=null){
+                    e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+                }
             }
 
             okButton.onclick = function(e){
+                deleteButton.click();
                 var player= document.getElementById('player');
                 player.src = audioURL;
+                audioRecord = blob;
+                $('#audio-rm-button').show();
+                $('#audio-record-icon').show();
                 $("#recorder-modal").modal("toggle");
+
             }
         }
 
@@ -485,8 +535,6 @@ function recordAudio(e){
 function visualize(stream) {
 
     var canvas = document.querySelector('.visualizer');
-    var audioCtx = new (window.AudioContext || webkitAudioContext)();
-    var canvasCtx = canvas.getContext("2d");
     var audioCtx = new (window.AudioContext || webkitAudioContext)();
     var canvasCtx = canvas.getContext("2d");
     var source = audioCtx.createMediaStreamSource(stream);

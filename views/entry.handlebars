@@ -44,10 +44,13 @@
 
 			
 			<div id="audio-block">
-				<!-- <div> -->
-				<img class="rm-element-button" id="audio-rm-button" src="/images/remove-symbol.png"></img>
-				<img class="audioButton inputShadow" id="askForRecordButton" src="../images/recorder_button.png"></img>
 				
+				<div class="edit-audio-control">
+					<img class="audioButton inputShadow" id="audio-record-icon" src="/images/nonEmptyTape.png"></img>
+					<img class="rm-element-button" id="audio-rm-button" src="/images/remove-symbol.png"></img>
+					<img class="audioButton inputShadow" id="askForRecordButton" src="../images/recorder_button.png"></img>
+				</div>
+
 				<div id="player-block">
 					<audio id="player" src="{{memory.audioURL}}"></audio>	
 	 	    		<img class="audioButton" id="stopButton" src="../images/stop.png"></img>
@@ -150,11 +153,34 @@
         </div>
 	</div>
 
+
+
+	<div class="modal fade" id="audio-warning-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
+              </div>
+              <div class="modal-body">
+				<p style="font-size: 4vw;">You may overwrite your last clip by saving this modification!!</p>
+              	<div class="button-row">
+              		<!-- <button id="no-delete-button">NO</button> -->
+      				<button id="ok-overwrite-button">OK</button>
+              	</div>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+
+
+
 	<div class="modal fade" data-backdrop="static" id="recorder-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <button type="button" class="close" id="recorder-modal-exit-button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                  <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
               </div>
 				<section class="main-controls" >
