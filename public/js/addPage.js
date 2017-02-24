@@ -79,7 +79,9 @@ $(document).ready(function() {
     $("#cameraAreaAtAdd").hide();
     $("#audioAreaAtAdd").hide();
 
-    $('#datetime24').combodate();
+    $('#datetime24').combodate({
+        value:  moment().format('hh:mm')
+    });
 });
 
 function goToBottom() {
