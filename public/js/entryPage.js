@@ -1,4 +1,7 @@
 'use strict';
+//Used for audio
+var recording = false;
+var audioRecord ="";
 
 var current_data = {
     "memo": "",
@@ -41,6 +44,17 @@ function initializePage() {
 
     $('#datetime24').hide();
 
+    $('#askForRecordButton').hide();
+    $('.rm-element-button').hide();
+    $('#playButton').click(audioToggle);
+    $('#stopButton').click(resetMusic);
+    $('#askForRecordButton').click(recordAudio);
+    $('#audio-ok-button').hide();
+
+    // $('.hide').hide();
+
+    $(".rm-element-button").click(removeElement);
+
     console.log($("#entry-container").data("entryid"));
 
     // save initial data
@@ -53,15 +67,19 @@ function initializePage() {
     current_data.imageURL = $("#entry-image").attr("src");
     current_data.emoji = $("#entry-emoji").data("emojiid");
     current_data.emojiImageURL = $("#entry-emoji").attr("src");
-    // current_data.audioURL;
+    current_data.audioURL = $('#player').attr("src");
     console.log(current_data.memo);
     console.log(current_data.time);
     console.log(current_data.date);
     console.log(current_data.imageURL);
     console.log(current_data.emoji);
+    console.log(current_data.audioURL);
 
-    $('#playButton').click(audioToggle);
-    $('#stopButton').click(resetMusic);
+    if(current_data.audioURL){
+
+    }else{
+        $(".audioButton").hide()
+    }
 }
 
 function resetMusic(e){
@@ -95,6 +113,7 @@ function edit(e) {
     $("#entry-emoji").attr("data-target", "#emoji-modal");
     $("#entry-image").attr("data-target", "#camera-modal");
 
+
     $("#edit-button").hide();
     $("#delete-button").show();
     $("#cancel-button").show();
@@ -103,6 +122,12 @@ function edit(e) {
     $('#datetime24').show();
     $('#datetime24').combodate();
     $('#entry-time').hide();
+
+    $("#playButton").hide();
+    $("#stopButton").hide();
+    $("#askForRecordButton").show();
+
+    $(".rm-element-button").show();
 
     previewCamera();
 }
@@ -133,6 +158,7 @@ function close_edit(e) {
     $("#entry-emoji").attr("data-target", "");
     $("#entry-image").attr("data-target", "#image-modal");
 
+
     $("#edit-button").show();
     $("#delete-button").hide();
     $("#cancel-button").hide();
@@ -142,7 +168,16 @@ function close_edit(e) {
     $('#datetime24').hide();
     $('#entry-time').show();
 
+    $("#askForRecordButton").hide();
+
+    $(".rm-element-button").hide();
+
     show_content();
+    //The code should be placed below show_contect;
+    if( $('#player').attr("src")!=""){
+        $("#playButton").show();
+        $("#stopButton").show();
+    }
 }
 
 function save(e) {
@@ -157,13 +192,14 @@ function save(e) {
     current_data.imageURL = $("#entry-image").attr("src");
     current_data.emoji = $("#entry-emoji").data("emojiid");
     current_data.emojiImageURL = $("#entry-emoji").attr("src");
-    // current_data.audioURL;
+    current_data.audioURL = $('#player').attr("src");
     console.log(current_data.memo);
     console.log(current_data.time);
     console.log(current_data.date);
     console.log(current_data.imageURL);
     console.log(current_data.emoji);
     console.log(current_data.emojiImageURL);
+    console.log(current_data.audioURL);
     close_edit(e);
 }
 
@@ -180,7 +216,7 @@ function show_content() {
     $("#entry-time").text(current_data.time.hour + ":" + current_data.time.minute + " " + getWeekday(current_data.date) + " " + monthToString(current_data.date.month) + " " + current_data.date.day + ", " + current_data.date.year);
     $("#entry-image").attr("src", current_data.imageURL);
     $("#entry-emoji").attr("src", current_data.emojiImageURL);
-    // current_audioURL;
+    $("#player").attr("src", current_data.audioURL);
 }
 
 function previewCamera() {
@@ -284,5 +320,177 @@ function getWeekday(date) {
             return "Sat.";
         case 0:
             return "Sun.";
+    }
+}
+
+function removeElement(e){
+
+    if(e.target.id == "audio-rm-button"){
+        console.log("remove audio");
+        $('#playButton').hide();
+        $('#stopButton').hide();
+        $('#askForRecordButton').hide();
+        var player = document.getElementById('player');
+        player.src = '';
+        //TO-DO: Change the audioURL of the entry to "";
+
+    }else if(e.target.id == "img-rm-button"){
+        console.log("remove image");        
+        var img = document.getElementById('entry-image');
+        img.src = '/images/no-image.jpg';
+        //TO-DO: Change the imgURL of the entry to "";
+
+    }else if(e.target.id == "text-rm-button"){
+        console.log("remove text");
+        $('#edit-text').val('');
+        //TO-DO: Change the text of the entry to "";
+
+    }
+}
+
+
+
+function recordAudio(e){
+
+    $("#recorder-modal").modal("toggle");
+    if(audioRecord){
+        
+    }else{
+        $('#audio-ok-button').hide();
+    }
+
+    navigator.getUserMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
+    if (navigator.getUserMedia){
+        console.log('getUserMedia supported.');
+        var chunks = []; // The container for the audio             
+        var soundClips = document.querySelector('.sound-clips');
+        var record = document.getElementById('recordButton');
+        var okButton = document.getElementById('audio-ok-button');
+        var onSuccess = function(stream) {
+        var mediaRecorder = new MediaRecorder(stream);
+        visualize(stream);
+
+        record.onclick = function() {
+            console.log("clicked");
+            if(soundClips.childElementCount != 0){
+                soundClips.removeChild(soundClips.childNodes[0]);
+            }
+            if(recording==false){
+                mediaRecorder.start();
+                console.log(mediaRecorder.state);
+                console.log("recorder started");
+                record.style.background = "red";
+                record.textContent = "Stop"
+            }else{
+                mediaRecorder.stop();
+                console.log(mediaRecorder.state);
+                console.log("recorder stopped");
+                record.style.background = "";
+                record.style.color = "";
+                record.textContent = "Record"    
+            }
+            recording =!recording;
+        }
+
+        mediaRecorder.onstop = function(e) {
+            console.log("data available after MediaRecorder.stop() called.");
+            $('#audio-ok-button').show();
+
+            var clipContainer = document.createElement('article');
+            var clipLabel = document.createElement('p');
+            var audio = document.createElement('audio');
+            var deleteButton = document.createElement('button');
+            clipContainer.classList.add('clip');
+            audio.setAttribute('controls', '');
+            deleteButton.textContent = 'Delete';
+            deleteButton.className = 'delete';
+
+            clipContainer.appendChild(audio);
+            // clipContainer.appendChild(clipLabel);
+            clipContainer.appendChild(deleteButton);
+            soundClips.appendChild(clipContainer);
+
+            audio.controls = true;
+            var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+            chunks = [];
+            var audioURL = window.URL.createObjectURL(blob); 
+            audio.src = audioURL;
+            
+            //Save to global var.
+            audioRecord = blob;
+
+            deleteButton.onclick = function(e) {
+                audioRecord = "";
+                $('#audio-ok-button').hide();
+                e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+            }
+
+            okButton.onclick = function(e){
+                var player= document.getElementById('player');
+                player.src = audioURL;
+                $("#recorder-modal").modal("toggle");
+            }
+        }
+
+        mediaRecorder.ondataavailable = function(e) {
+            chunks.push(e.data);
+        }
+    }
+
+        var onError = function(err) {
+            console.log('The following error occured: ' + err);
+        }
+
+        navigator.getUserMedia({ audio: true }, onSuccess, onError);   
+    
+    } else {
+        console.log('getUserMedia not supported!');
+        alert('getUserMedia not supported!');
+    }
+}
+
+function visualize(stream) {
+
+    var canvas = document.querySelector('.visualizer');
+    var audioCtx = new (window.AudioContext || webkitAudioContext)();
+    var canvasCtx = canvas.getContext("2d");
+    var audioCtx = new (window.AudioContext || webkitAudioContext)();
+    var canvasCtx = canvas.getContext("2d");
+    var source = audioCtx.createMediaStreamSource(stream);
+    var analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 2048;
+    var bufferLength = analyser.frequencyBinCount;
+    var dataArray = new Uint8Array(bufferLength);
+    
+    source.connect(analyser);
+    draw()
+
+    function draw() {
+        requestAnimationFrame(draw);
+        analyser.getByteTimeDomainData(dataArray);
+        canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+        canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+        canvasCtx.lineWidth = 2;
+        canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+        canvasCtx.beginPath();
+        var sliceWidth = canvas.width * 1.0 / bufferLength;
+        var x = 0;
+        for(var i = 0; i < bufferLength; i++) {
+     
+            var v = dataArray[i] / 128.0;
+            var y = v * canvas.height/2;
+            if(i === 0) {
+                canvasCtx.moveTo(x, y);
+            } else {
+                canvasCtx.lineTo(x, y);
+            }
+            x += sliceWidth;
+        }
+        canvasCtx.lineTo(canvas.width, canvas.height/2);
+        canvasCtx.stroke();
     }
 }

@@ -92,18 +92,14 @@ $(document).ready(function() {
                 record.onclick = function() {
                     
                     if(soundClips.childElementCount != 0){
-                        soundClips.removeChild(soundClips.childNodes[1]);
+                        soundClips.removeChild(soundClips.childNodes[0]);
                     }
                     if(recording==false){
                         mediaRecorder.start();
-                        // console.log(mediaRecorder.state);
-                        // console.log("recorder started");
                         record.style.background = "red";
                         record.textContent = "Stop"
                     }else{
                         mediaRecorder.stop();
-                        // console.log(mediaRecorder.state);
-                        // console.log("recorder stopped");
                         record.style.background = "";
                         record.style.color = "";
                         record.textContent = "Record"    
