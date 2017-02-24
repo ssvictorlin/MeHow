@@ -3,40 +3,50 @@
  * GET home page.
  */
 
-var memories = require('../memories.json');
+// var memories = require('../memories.json');
 var emojis = require('../emojis.json');
 var tools = require('./tools');
+var sqlite3 = require('sqlite3').verbose();
+
+var dbPath = "./data.db";
 
 exports.view = function(req, res){
-	for (var i = 0; i < memories.memories.length; i++) {
-		// deal with date/time string
-		memories.memories[i].date = tools.addWeekday(memories.memories[i].date);
-		memories.memories[i].date = tools.monthToString(memories.memories[i].date);
-		memories.memories[i].time = tools.timeToString(memories.memories[i].time);
-	}
+	var memories = [], previous_date = {"day": "", "month": "", "year": ""};
+	var db = new sqlite3.Database(dbPath, function(err){
+		if(err) console.log("open DB error");
+	});
 
-	memories.memories[0].date.visible = 1;
-	for (var i = 1; i < memories.memories.length; i++) {
-		// hide same date event
-		if ((memories.memories[i].date.day == memories.memories[i - 1].date.day) &&
-			(memories.memories[i].date.month == memories.memories[i - 1].date.month) &&
-			(memories.memories[i].date.year == memories.memories[i - 1].date.year)) {
-			memories.memories[i].date.visible = 0;
-		}
-		else
-			memories.memories[i].date.visible = 1;
-	}
+	db.serialize(function() {
+		db.each("SELECT * FROM memories", function(err, row) {
+			if(err) console.log("read DB error");
+	        var temp = {"id": row.id, "time": {"hour": row.hour, "minute": row.minute}, "date": {"day": row.day, "month": row.month, "year": row.year}, "emoji": row.emoji, "imageURL": row.imageURL, "audioURL": row.audioURL, "memo": row.memo};
+			temp.date = tools.addWeekday(temp.date);
+			temp.date = tools.monthToString(temp.date);
+			temp.time = tools.timeToString(temp.time);
 
-	for (var i = 0; i < memories.memories.length; i++) {
-		// find emoji of that day
-		for (var j = 0; j < emojis.emojis.length; j++) {
-			if (memories.memories[i].emoji == emojis.emojis[j].id) {
-				memories.memories[i].emojiImageURL = emojis.emojis[j].imageURL;
-				console.log(memories.memories[i].emojiImageURL);
-				break;
+			if ((temp.date.day == previous_date.day) &&
+				(temp.date.month == previous_date.month) &&
+				(temp.date.year == previous_date.year)) {
+				temp.date.visible = 0;
 			}
-		}
-	}
+			else
+				temp.date.visible = 1;
+			previous_date = temp.date;
 
-	res.render('index', memories);
+			for (var j = 0; j < emojis.emojis.length; j++) {
+				if (temp.emoji == emojis.emojis[j].id) {
+					temp.emojiImageURL = emojis.emojis[j].imageURL;
+					console.log(temp.emojiImageURL);
+					break;
+				}
+			}
+
+			memories.push(temp);
+			
+		}, function(){
+			memories["memories"] = memories;
+			res.render('index', memories);
+        });
+	});
+	db.close();
 };
