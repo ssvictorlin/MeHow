@@ -53,10 +53,7 @@ function initializePage() {
     $('#stopButton').click(resetMusic);    
     $('#askForRecordButton').click(overwrite_warning);
     $('#audio-ok-button').hide();
-<<<<<<< HEAD
 
-=======
->>>>>>> fix bugs, change design of rrecorder on editpage
     $(".rm-element-button").click(removeElement);
     var player = document.getElementById('player');
     player.onended = function(){
