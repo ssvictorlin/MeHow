@@ -135,7 +135,7 @@ exports.updateMemory = function(req, res){
 		fs.writeFile(ImagePath, base64Data, 'base64', function(err) {
 			console.log(err);
 		});
-		// db.run("UPDATE memories SET imageURL = ? WHERE id = ?", newImagePath.substring(8), data.id);
+		db.run("UPDATE memories SET imageURL = ? WHERE id = ?", ImagePath.substring(8), data.id);
 	}
 	// else if (data.imageData)
 	// 	db.run("UPDATE memories SET imageURL = ? WHERE id = ?", newImagePath.substring(8), data.id);
@@ -167,6 +167,7 @@ exports.updateMemory = function(req, res){
 		fs.writeFile(AudioPath, decodeData, function (err){
 			if (err) return console.log(err);
 		});
+		db.run("UPDATE memories SET audioURL = ? WHERE id = ?", AudioPath.substring(8), data.id);
 	}
 
 	db.close();
