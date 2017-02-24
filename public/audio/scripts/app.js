@@ -8,17 +8,15 @@ navigator.getUserMedia = ( navigator.getUserMedia ||
 
 // set up basic variables for app
 var recording = false;
+
+
 var record = document.getElementById('recordButton');
-// var stop = document.querySelector('.stop');
 var soundClips = document.querySelector('.sound-clips');
 var canvas = document.querySelector('.visualizer');
 
 //Edited by Mickie
 var soundSection = document.querySelector('#sound-section');
 
-// disable stop button while not recording
-
-stop.disabled = true;
 
 // visualiser setup - create web audio api context and canvas
 
@@ -35,109 +33,96 @@ if (navigator.getUserMedia) {
 
   var onSuccess = function(stream) {
     var mediaRecorder = new MediaRecorder(stream);
-
     visualize(stream);
 
-    record.onclick = function() {
+                  record.onclick = function() {
+                      //Edited by Mickie
+                      if(soundClips.childElementCount != 0){
+                        soundClips.removeChild(soundClips.childNodes[1]);
+                      }
+                      if(recording==false){
+                        mediaRecorder.start();
+                        console.log(mediaRecorder.state);
+                        console.log("recorder started");
+                        record.style.background = "red";
+                        record.textContent = "Stop"
+                      }else{
+                        mediaRecorder.stop();
+                        console.log(mediaRecorder.state);
+                        console.log("recorder stopped");
+                        record.style.background = "";
+                        record.style.color = "";
+                        record.textContent = "Record"    
+                      }
+                      recording =!recording;
+                  }
 
-        //Edited by Mickie
-        if(soundClips.childElementCount != 0){
-          soundClips.removeChild(soundClips.childNodes[1]);
-        }
-        if(recording==false){
-          mediaRecorder.start();
-          console.log(mediaRecorder.state);
-          console.log("recorder started");
-          record.style.background = "red";
-          record.textContent = "Stop"
+                    mediaRecorder.onstop = function(e) {
+                      
+                      console.log("data available after MediaRecorder.stop() called.");
 
-          // stop.disabled = false;
-          // record.disabled = false;
-        }else{
-          mediaRecorder.stop();
-          console.log(mediaRecorder.state);
-          console.log("recorder stopped");
-          record.style.background = "";
-          record.style.color = "";
-          record.textContent = "Record"    
-        }
-        recording =!recording;
-    }
+                      var clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
+                      console.log(clipName);
+                      var clipContainer = document.createElement('article');
+                      var clipLabel = document.createElement('p');
+                      var audio = document.createElement('audio');
+                      var deleteButton = document.createElement('button');
+                     
+                      clipContainer.classList.add('clip');
+                      audio.setAttribute('controls', '');
+                      deleteButton.textContent = 'Delete';
+                      deleteButton.className = 'delete';
 
-    //   stop.onclick = function() {
-    //   mediaRecorder.stop();
-    //   console.log(mediaRecorder.state);
-    //   console.log("recorder stopped");
-    //   record.style.background = "";
-    //   record.style.color = "";
-    //   // mediaRecorder.requestData();
+                      if(clipName === null) {
+                        clipLabel.textContent = 'My unnamed clip';
+                      } else {
+                        clipLabel.textContent = clipName;
+                      }
 
-    //   stop.disabled = true;
-    //   record.disabled = false;
-    // }
+                      clipContainer.appendChild(audio);
+                      clipContainer.appendChild(clipLabel);
+                      clipContainer.appendChild(deleteButton);
+                      soundClips.appendChild(clipContainer);
 
-    mediaRecorder.onstop = function(e) {
-      
-      console.log("data available after MediaRecorder.stop() called.");
+                      audio.controls = true;
+                      var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+                      chunks = [];
+                      var audioURL = window.URL.createObjectURL(blob);
+                      
 
-      var clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
-      console.log(clipName);
-      var clipContainer = document.createElement('article');
-      var clipLabel = document.createElement('p');
-      var audio = document.createElement('audio');
-      var deleteButton = document.createElement('button');
-     
-      clipContainer.classList.add('clip');
-      audio.setAttribute('controls', '');
-      deleteButton.textContent = 'Delete';
-      deleteButton.className = 'delete';
+                      audio.src = audioURL;
+                      console.log("recorder stopped");
+                      goToBottom();
+                      
 
-      if(clipName === null) {
-        clipLabel.textContent = 'My unnamed clip';
-      } else {
-        clipLabel.textContent = clipName;
-      }
+                      deleteButton.onclick = function(e) {
+                        evtTgt = e.target;
+                        evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
+                      }
 
-      clipContainer.appendChild(audio);
-      clipContainer.appendChild(clipLabel);
-      clipContainer.appendChild(deleteButton);
-      soundClips.appendChild(clipContainer);
+                        clipLabel.onclick = function() {
+                          var existingName = clipLabel.textContent;
+                          var newClipName = prompt('Enter a new name for your sound clip?');
+                          if(newClipName === null) {
+                            clipLabel.textContent = existingName;
+                          } else {
+                            clipLabel.textContent = newClipName;
+                          }
+                        }
+                      }
 
-      audio.controls = true;
-      var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-      chunks = [];
-      var audioURL = window.URL.createObjectURL(blob);
-      audio.src = audioURL;
-      console.log("recorder stopped");
-        goToBottom();
-      deleteButton.onclick = function(e) {
-        evtTgt = e.target;
-        evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-      }
-
-      clipLabel.onclick = function() {
-        var existingName = clipLabel.textContent;
-        var newClipName = prompt('Enter a new name for your sound clip?');
-        if(newClipName === null) {
-          clipLabel.textContent = existingName;
-        } else {
-          clipLabel.textContent = newClipName;
-        }
-      }
-    }
-
-    mediaRecorder.ondataavailable = function(e) {
-      chunks.push(e.data);
-    }
+                      mediaRecorder.ondataavailable = function(e) {
+                        chunks.push(e.data);
+                      }
   }
 
-  var onError = function(err) {
-    console.log('The following error occured: ' + err);
-  }
+          // var onError = function(err) {
+          //   console.log('The following error occured: ' + err);
+          // }
 
-  navigator.getUserMedia(constraints, onSuccess, onError);
+  // navigator.getUserMedia(constraints, onSuccess, onError);
 } else {
-   console.log('getUserMedia not supported on your browser!');
+   // console.log('getUserMedia not supported on your browser!');
 }
 
 function visualize(stream) {
@@ -149,7 +134,6 @@ function visualize(stream) {
   var dataArray = new Uint8Array(bufferLength);
 
   source.connect(analyser);
-  //analyser.connect(audioCtx.destination);
   
   WIDTH = canvas.width
   HEIGHT = canvas.height;
@@ -195,8 +179,5 @@ function visualize(stream) {
 }
 
 function goToBottom() {
-  // var documentHeight=document.documentElement.offsetHeight;
-  // var viewportHeight=window.innerHeight;
-  // window.scrollTo(0,documentHeight-viewportHeight);
     window.scrollTo(0,document.body.scrollHeight);
 } 

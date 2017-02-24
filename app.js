@@ -8,6 +8,7 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
 var moment = require('moment');
+var fs = require('fs')
 
 var login = require('./routes/login');
 
@@ -54,6 +55,15 @@ app.get('/entry/:id', entry.viewEntry);
 app.get('/add', add.viewAdd);
 
 app.get('/setting', setting.viewSetting);
+
+app.post("/test", function(req,res){
+
+  var data = String(req.body.data.toString().match(/,(.*)$/)[1]);
+  var decodeData = new Buffer(data.toString(), 'base64');
+  fs.writeFile('./test.webm', decodeData, function (err){
+      if (err) return console.log(err);
+   });
+});
 
 // Example route
 // app.get('/users', user.list);

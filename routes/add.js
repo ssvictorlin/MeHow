@@ -7,6 +7,7 @@ var emojis = require('../emojis.json');
 var tools = require('./tools');
 
 exports.viewAdd = function(req, res){
+
 	var context = {"date": {"month": "", "day": "", "year": ""}, "time": {"hour": "", "minute": ""}, "emojis": emojis};
 	var d = new Date();
 	context.date.year = d.getFullYear();
