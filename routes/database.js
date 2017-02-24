@@ -86,36 +86,49 @@ exports.updateMemory = function(req, res){
 		if(err) console.log("open DB error");
 	});
 
-	var ImagePath = dataPath + data.date.year + "-" + tools.numToString(data.date.month) + "-" + tools.numToString(data.date.day) + "-" + tools.numToString(data.time.hour) + "-" + tools.numToString(data.time.minute) + ".jpg";
-	var AudioPath = dataPath + data.date.year + "-" + tools.numToString(data.date.month) + "-" + tools.numToString(data.date.day) + "-" + tools.numToString(data.time.hour) + "-" + tools.numToString(data.time.minute) + ".webm";
-	// db.each("SELECT * FROM memories WHERE id=(?)", data.id, function(err, row) {
- //        if(err) console.log(err);
- //        oldImagePath = dataPath + row.year + "-" + tools.numToString(row.month) + "-" + tools.numToString(row.day) + "-" + tools.numToString(row.hour) + "-" + tools.numToString(row.minute) + ".jpg";
-	// 	newImagePath = dataPath + data.date.year + "-" + tools.numToString(data.date.month) + "-" + tools.numToString(data.date.day) + "-" + tools.numToString(data.time.hour) + "-" + tools.numToString(data.time.minute) + ".jpg";
+	db.each("SELECT * FROM memories WHERE id=(?)", data.id, function(err, row) {
+        if(err) console.log(err);
+        oldImagePath = "./public" + row.imageURL;
+        // oldImagePath = dataPath + row.year + "-" + tools.numToString(row.month) + "-" + tools.numToString(row.day) + "-" + tools.numToString(row.hour) + "-" + tools.numToString(row.minute) + ".jpg";
+		// newImagePath = dataPath + data.date.year + "-" + tools.numToString(data.date.month) + "-" + tools.numToString(data.date.day) + "-" + tools.numToString(data.time.hour) + "-" + tools.numToString(data.time.minute) + ".jpg";
 
-	// 	oldAudioPath = dataPath + row.year + "-" + tools.numToString(row.month) + "-" + tools.numToString(row.day) + "-" + tools.numToString(row.hour) + "-" + tools.numToString(row.minute) + ".webm";
-	// 	newAudioPath = dataPath + data.date.year + "-" + tools.numToString(data.date.month) + "-" + tools.numToString(data.date.day) + "-" + tools.numToString(data.time.hour) + "-" + tools.numToString(data.time.minute) + ".webm";
-	// 	console.log(oldImagePath);
-	// 	console.log(newImagePath);
-	// 	console.log(oldAudioPath);
-	// 	console.log(newAudioPath);
+		oldAudioPath = "./public" + row.audioURL;
+		// oldAudioPath = dataPath + row.year + "-" + tools.numToString(row.month) + "-" + tools.numToString(row.day) + "-" + tools.numToString(row.hour) + "-" + tools.numToString(row.minute) + ".webm";
+		// newAudioPath = dataPath + data.date.year + "-" + tools.numToString(data.date.month) + "-" + tools.numToString(data.date.day) + "-" + tools.numToString(data.time.hour) + "-" + tools.numToString(data.time.minute) + ".webm";
+		// console.log(oldImagePath);
+		// console.log(newImagePath);
+		// console.log(oldAudioPath);
+		// console.log(newAudioPath);
 
- //        // if time or date change, change the media filename
- //        if (row.year != data.date.year || row.month != data.date.month || row.day != data.date.day || row.hour != data.time.hour || row.minute != data.time.minute) {
- //        	console.log("time different!!!");
+  //       // if time or date change, change the media filename
+  //       if (row.year != data.date.year || row.month != data.date.month || row.day != data.date.day || row.hour != data.time.hour || row.minute != data.time.minute) {
+  //       	console.log("time different!!!");
 
- //        	if(row.imageURL) {
-	// 			fs.rename(oldImagePath, newImagePath, function (err) {
-	// 				if (err) console.log(err);
-	// 			});
-	// 		}
-	// 		if(row.audioURL) {
-	// 			fs.rename(oldAudioPath, newAudioPath, function (err) {
-	// 				if (err) console.log(err);
-	// 			});
-	// 		}
- //        }
-	// });
+  //       	if(row.imageURL) {
+		// 		fs.rename(oldImagePath, newImagePath, function (err) {
+		// 			if (err) console.log(err);
+		// 		});
+		// 	}
+		// 	if(row.audioURL) {
+		// 		fs.rename(oldAudioPath, newAudioPath, function (err) {
+		// 			if (err) console.log(err);
+		// 		});
+		// 	}
+  //       }
+    	console.log("old " + oldImagePath + " " + oldAudioPath);
+  		
+  		if (row.imageURL && fs.existsSync(oldImagePath) && !data.imageData) {
+			console.log("delete exist image");
+			fs.unlinkSync(oldImagePath);
+			db.run("UPDATE memories SET imageURL = ? WHERE id = ?", "", data.id);
+		}
+		if (row.audioURL && fs.existsSync(oldAudioPath) && !data.audioData) {
+			console.log("delete exist audio");
+			fs.unlinkSync(oldAudioPath);
+			db.run("UPDATE memories SET audioURL = ? WHERE id = ?", "", data.id);
+		}
+	});
+
 
 	db.run("UPDATE memories SET memo = ? WHERE id = ?", data.memo, data.id);
 	db.run("UPDATE memories SET year = ? WHERE id = ?", data.date.year, data.id);
@@ -125,17 +138,21 @@ exports.updateMemory = function(req, res){
 	db.run("UPDATE memories SET minute = ? WHERE id = ?", data.time.minute, data.id);
 	db.run("UPDATE memories SET emoji = ? WHERE id = ?", data.emoji, data.id);
 
-	if (fs.existsSync(ImagePath) && !data.imageData) {
-		console.log("delete exist image");
-		fs.unlinkSync(ImagePath);
-		db.run("UPDATE memories SET imageURL = ? WHERE id = ?", "", data.id);
-	}
-	else if (data.imageData.substring(0, 5) != "/data"){
+	newImagePath = dataPath + data.date.year + "-" + tools.numToString(data.date.month) + "-" + tools.numToString(data.date.day) + "-" + tools.numToString(data.time.hour) + "-" + tools.numToString(data.time.minute) + ".jpg";
+	newAudioPath = dataPath + data.date.year + "-" + tools.numToString(data.date.month) + "-" + tools.numToString(data.date.day) + "-" + tools.numToString(data.time.hour) + "-" + tools.numToString(data.time.minute) + ".webm";
+
+	// if (fs.existsSync(oldImagePath) && !data.imageData) {
+	// 	console.log("delete exist image");
+	// 	fs.unlinkSync(oldImagePath);
+	// 	db.run("UPDATE memories SET imageURL = ? WHERE id = ?", "", data.id);
+	// }
+	// else if (data.imageData && data.imageData.substring(0, 5) != "/data"){
+	if (data.imageData && data.imageData.substring(0, 5) != "/data"){
 		var base64Data = data.imageData.replace(/^data:image\/png;base64,/, "");
-		fs.writeFile(ImagePath, base64Data, 'base64', function(err) {
+		fs.writeFile(newImagePath, base64Data, 'base64', function(err) {
 			console.log(err);
 		});
-		db.run("UPDATE memories SET imageURL = ? WHERE id = ?", ImagePath.substring(8), data.id);
+		db.run("UPDATE memories SET imageURL = ? WHERE id = ?", newImagePath.substring(8), data.id);
 	}
 	// else if (data.imageData)
 	// 	db.run("UPDATE memories SET imageURL = ? WHERE id = ?", newImagePath.substring(8), data.id);
@@ -156,19 +173,24 @@ exports.updateMemory = function(req, res){
 	// 	}
 	// }
 
-	if (fs.existsSync(AudioPath) && !data.audioData) {
-		console.log("delete exist audio");
-		fs.unlinkSync(AudioPath);
-		db.run("UPDATE memories SET audioURL = ? WHERE id = ?", "", data.id);
-	}
-	else if (data.audioData.substring(0, 5) != "/data"){
+	// if (fs.existsSync(oldAudioPath) && !data.audioData) {
+	// 	console.log("delete exist audio");
+	// 	fs.unlinkSync(oldAudioPath);
+	// 	db.run("UPDATE memories SET audioURL = ? WHERE id = ?", "", data.id);
+	// }
+	// else if (data.audioData && data.audioData.substring(0, 5) != "/data"){
+	if (data.audioData && data.audioData.substring(0, 5) != "/data"){
 		var base64Data = String(data.audioData.toString().match(/,(.*)$/)[1]);
 		var decodeData = new Buffer(base64Data.toString(), 'base64');
-		fs.writeFile(AudioPath, decodeData, function (err){
+		fs.writeFile(newAudioPath, decodeData, function (err){
 			if (err) return console.log(err);
 		});
-		db.run("UPDATE memories SET audioURL = ? WHERE id = ?", AudioPath.substring(8), data.id);
+		db.run("UPDATE memories SET audioURL = ? WHERE id = ?", newAudioPath.substring(8), data.id);
 	}
+
+	db.each("SELECT * FROM memories WHERE id=(?)", data.id, function(err, row) {
+        console.log("new " + row.imageURL + " " + row.audioURL);
+	});
 
 	db.close();
 

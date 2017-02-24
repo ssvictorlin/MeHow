@@ -4,7 +4,6 @@ var recording = false;
 var audioRecord ="";
 
 var noImageURL = "/images/no-image.jpg";
-var audioData ="";
 
 var current_data = {
     "memo": "",
