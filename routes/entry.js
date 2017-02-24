@@ -7,6 +7,7 @@ var sqlite3 = require('sqlite3').verbose();
 var tools = require('./tools');
 
 var dbPath = "./data.db";
+var noImageURL = "/images/no-image.jpg";
 
 exports.viewEntry = function(req, res){
 	var emojis = require('../emojis.json');
@@ -25,7 +26,8 @@ exports.viewEntry = function(req, res){
 				context.memory.date = tools.monthToString(context.memory.date);
 				context.memory.date = tools.dateToString(context.memory.date);
 				context.memory.time = tools.timeToString(context.memory.time);
-
+				if (!row.imageURL)
+					context.memory.imageURL = noImageURL;
 				for (var i = 0; i < emojis.emojis.length; i++) {
 					if (context.memory.emoji == emojis.emojis[i].id) {
 						context.memory.emojiImageURL = emojis.emojis[i].imageURL;
@@ -37,6 +39,5 @@ exports.viewEntry = function(req, res){
 		});
 	});
 	db.close();
-	
 };
 
