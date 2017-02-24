@@ -84,6 +84,12 @@ exports.dateToString = function dateToString(date) {
 	return date;
 }
 
+exports.numToString = function numToString(num) {
+    if (num / 10 < 1)
+        num = ("0" + num).slice(-2);
+    return num;
+}
+
 exports.copyDBMemory = function copyMemory(mem2) {
 	var mem1 = {"id": "", "time": {"hour": "", "minute": ""}, "date": {"day": "", "month": "", "year": ""}, "emoji": "", "imageURL": "", "audioURL": "", "memo": ""};
 	mem1.id = mem2.id;

@@ -149,7 +149,7 @@ $(document).ready(function() {
                     goToBottom();
 
                     deleteButton.onclick = function(e) {
-                        saveAudio(audioRecord);
+                        // saveAudio(audioRecord);
                         audioRecord = "";
                         e.target.parentNode.parentNode.removeChild(e.target.parentNode);
                     }

@@ -61,6 +61,7 @@ app.get('/setting', setting.viewSetting);
 
 app.post('/insertMemory', database.insertMemory);
 app.post('/deleteMemory', database.deleteMemory);
+app.post('/updateMemory', database.updateMemory);
 
 app.post("/test", function(req,res){
 

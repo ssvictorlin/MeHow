@@ -2,6 +2,7 @@
 //Used for audio
 var recording = false;
 var audioRecord ="";
+var noImageURL = "/images/no-image.jpg";
 
 var current_data = {
     "memo": "",
@@ -38,7 +39,7 @@ function initializePage() {
     $(".emojis").click( choose_emoji );
     $("#emoji-modal").modal("hide");
 
-    $("#entry-image").attr("data-target", "#image-modal");
+    // $("#entry-image").attr("data-target", "#image-modal");
     $("#gallery").click( readImageFile );
     $("#snap").click( snapImage );
 
@@ -51,19 +52,17 @@ function initializePage() {
     $('#askForRecordButton').click(recordAudio);
     $('#audio-ok-button').hide();
 
-    // $('.hide').hide();
-
     $(".rm-element-button").click(removeElement);
 
     console.log($("#entry-container").data("entryid"));
 
     // save initial data
     current_data.memo = $("#edit-text").val();
-    current_data.time.hour = $("#entry-time").text().substr(0, 2);
-    current_data.time.minute = $("#entry-time").text().substr(3, 2);
-    current_data.date.month = $("#entry-time").data("month");
-    current_data.date.day = $("#entry-time").text().substr(15, 2);
-    current_data.date.year = $("#entry-time").text().substr(19, 4);
+    current_data.time.hour = parseInt($("#entry-time").text().substr(0, 2));
+    current_data.time.minute = parseInt($("#entry-time").text().substr(3, 2));
+    current_data.date.month = parseInt($("#entry-time").data("month"));
+    current_data.date.day = parseInt($("#entry-time").text().substr(15, 2));
+    current_data.date.year = parseInt($("#entry-time").text().substr(19, 4));
     current_data.imageURL = $("#entry-image").attr("src");
     current_data.emoji = $("#entry-emoji").data("emojiid");
     current_data.emojiImageURL = $("#entry-emoji").attr("src");
@@ -183,16 +182,37 @@ function close_edit(e) {
 function save(e) {
     e.preventDefault();
     console.log("save!!");
+    var data = {"id": "", "time": {"hour": "", "minute": ""}, "date": {"day": "", "month": "", "year": ""}, "emoji": "", "imageData": "", "audioData": ""};
+
+    data.id = $("#entry-container").data("entryid");
+
     current_data.memo = $("#edit-text").val();
-    current_data.time.hour = $('#datetime24').val().substr(0, 2);
-    current_data.time.minute = $('#datetime24').val().substr(3, 2);
-    current_data.date.month = $('#datetime24').val().substr(6, 2);
-    current_data.date.day = $('#datetime24').val().substr(9, 2);
-    current_data.date.year = $('#datetime24').val().substr(12, 4);
-    current_data.imageURL = $("#entry-image").attr("src");
+    data.memo = $("#edit-text").val();
+
+    current_data.time.hour = parseInt($('#datetime24').val().substr(0, 2));
+    current_data.time.minute = parseInt($('#datetime24').val().substr(3, 2));
+    current_data.date.month = parseInt($('#datetime24').val().substr(6, 2));
+    current_data.date.day = parseInt($('#datetime24').val().substr(9, 2));
+    current_data.date.year = parseInt($('#datetime24').val().substr(12, 4));
+    data.time.hour = parseInt($('#datetime24').val().substr(0, 2));
+    data.time.minute = parseInt($('#datetime24').val().substr(3, 2));
+    data.date.month = parseInt($('#datetime24').val().substr(6, 2));
+    data.date.day = parseInt($('#datetime24').val().substr(9, 2));
+    data.date.year = parseInt($('#datetime24').val().substr(12, 4));
+
     current_data.emoji = $("#entry-emoji").data("emojiid");
     current_data.emojiImageURL = $("#entry-emoji").attr("src");
+    data.emoji = $("#entry-emoji").data("emojiid");
+
+    current_data.imageURL = $("#entry-image").attr("src");
+    if ($("#entry-image").attr("src") == noImageURL)
+        data.imageData = "";
+    else
+        data.imageData = $("#entry-image").attr("src");
+
     current_data.audioURL = $('#player').attr("src");
+    data.audioData = audioRecord;
+
     console.log(current_data.memo);
     console.log(current_data.time);
     console.log(current_data.date);
@@ -201,6 +221,8 @@ function save(e) {
     console.log(current_data.emojiImageURL);
     console.log(current_data.audioURL);
     close_edit(e);
+
+    $.post('/updateMemory', data);
 }
 
 function choose_emoji(e) {
@@ -213,7 +235,8 @@ function choose_emoji(e) {
 function show_content() {
     $("#edit-text").val(current_data.memo);
     $("#edit-text").height( $("#edit-text")[0].scrollHeight );
-    $("#entry-time").text(current_data.time.hour + ":" + current_data.time.minute + " " + getWeekday(current_data.date) + " " + monthToString(current_data.date.month) + " " + current_data.date.day + ", " + current_data.date.year);
+    $("#datetime24").val(numToString(current_data.time.hour) + ":" + numToString(current_data.time.minute) + " " + numToString(current_data.date.month) + "-" + numToString(current_data.date.day) + "-" + current_data.date.year);
+    $("#entry-time").text(numToString(current_data.time.hour) + ":" + numToString(current_data.time.minute) + " " + getWeekday(current_data.date) + " " + monthToString(current_data.date.month) + " " + numToString(current_data.date.day) + ", " + current_data.date.year);
     $("#entry-image").attr("src", current_data.imageURL);
     $("#entry-emoji").attr("src", current_data.emojiImageURL);
     $("#player").attr("src", current_data.audioURL);
@@ -332,6 +355,7 @@ function removeElement(e){
         $('#askForRecordButton').hide();
         var player = document.getElementById('player');
         player.src = '';
+        audioRecord = "";
         //TO-DO: Change the audioURL of the entry to "";
 
     }else if(e.target.id == "img-rm-button"){
@@ -421,7 +445,12 @@ function recordAudio(e){
             audio.src = audioURL;
             
             //Save to global var.
-            audioRecord = blob;
+            // audioRecord = blob;
+            var reader = new window.FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function() {
+                audioRecord = reader.result;         
+            };
 
             deleteButton.onclick = function(e) {
                 audioRecord = "";
@@ -493,4 +522,10 @@ function visualize(stream) {
         canvasCtx.lineTo(canvas.width, canvas.height/2);
         canvasCtx.stroke();
     }
+}
+
+function numToString(num) {
+    if (num / 10 < 1)
+        num = ("0" + num).slice(-2);
+    return num;
 }

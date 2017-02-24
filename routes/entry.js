@@ -18,7 +18,7 @@ exports.viewEntry = function(req, res){
 	});
 	db.serialize(function() {
 		db.each("SELECT * FROM memories", function(err, row) {
-			console.log("read " + row.id + " " + row.hour + " " + row.minute + " " + row.day + " " + row.month + " " + row.year + " " + row.emoji + " " + row.imageURL + " " + row.audioURL + " " + row.memo);
+			// console.log("read " + row.id + " " + row.hour + " " + row.minute + " " + row.day + " " + row.month + " " + row.year + " " + row.emoji + " " + row.imageURL + " " + row.audioURL + " " + row.memo);
 			if (row.id == req.params.id){
 				context.memory = tools.copyDBMemory(row);
 				// deal with date/time string
