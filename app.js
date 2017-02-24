@@ -59,6 +59,8 @@ app.get('/add', add.viewAdd);
 
 app.get('/setting', setting.viewSetting);
 
+app.post('/insertMemory', database.insertMemory);
+
 app.post("/test", function(req,res){
 
   var data = String(req.body.data.toString().match(/,(.*)$/)[1]);

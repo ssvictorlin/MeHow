@@ -9,6 +9,7 @@ var tools = require('./tools');
 var sqlite3 = require('sqlite3').verbose();
 
 var dbPath = "./data.db";
+var noImageURL = "/images/no-image.jpg";
 
 exports.view = function(req, res){
 	var memories = [], previous_date = {"day": "", "month": "", "year": ""};
@@ -43,6 +44,9 @@ exports.view = function(req, res){
 					break;
 				}
 			}
+
+			if (temp.imageURL == "")
+				temp.imageURL = noImageURL;
 
 			memories.push(temp);
 			

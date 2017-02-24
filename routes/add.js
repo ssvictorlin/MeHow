@@ -7,7 +7,6 @@ var emojis = require('../emojis.json');
 var tools = require('./tools');
 
 exports.viewAdd = function(req, res){
-
 	var context = {"date": {"month": "", "day": "", "year": ""}, "time": {"hour": "", "minute": ""}, "emojis": emojis};
 	var d = new Date();
 	context.date.year = d.getFullYear();
@@ -18,10 +17,8 @@ exports.viewAdd = function(req, res){
 	
 	context.date = tools.addWeekday(context.date);
 	context.date = tools.monthToString(context.date);
-	context.date = tools.month2Digit(context.date);
+	context.date = tools.dateToString(context.date);
 	context.time = tools.timeToString(context.time);
-	console.log(context.date);
-	console.log(context.time);
   	res.render('add', context);
 };
 

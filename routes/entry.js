@@ -23,7 +23,7 @@ exports.viewEntry = function(req, res){
 				// deal with date/time string
 				context.memory.date = tools.addWeekday(context.memory.date);
 				context.memory.date = tools.monthToString(context.memory.date);
-				context.memory.date = tools.month2Digit(context.memory.date);
+				context.memory.date = tools.dateToString(context.memory.date);
 				context.memory.time = tools.timeToString(context.memory.time);
 
 				for (var i = 0; i < emojis.emojis.length; i++) {

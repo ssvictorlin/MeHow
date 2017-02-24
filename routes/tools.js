@@ -76,7 +76,7 @@ exports.timeToString = function timeToString(time) {
 	return time;
 }
 
-exports.month2Digit = function month2Digit(date) {
+exports.dateToString = function dateToString(date) {
 	if (date.month / 10 < 1)
 		date.month = ("0" + date.month).slice(-2);
 	if (date.day / 10 < 1)

@@ -1,9 +1,9 @@
 'use strict';
 var lastEmojiId = 0;
-var text ="";
 
 //Used for audio recorder 
 var recording = false;
+var imageRecord ="";
 var audioRecord ="";
 
 $(document).ready(function() {
@@ -57,6 +57,7 @@ $(document).ready(function() {
         context.scale(-1, 1);
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         $("#camera-canvas").show();
+        imageRecord = canvas.toDataURL();
         goToBottom();
     });
 
@@ -142,7 +143,12 @@ $(document).ready(function() {
                     audio.src = audioURL;
                     
                     //Save to global var.
-                    audioRecord = blob;
+                    // audioRecord = blob;
+                    var reader = new window.FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = function() {
+                        audioRecord = reader.result;         
+                    };
 
                     goToBottom();
 
@@ -185,13 +191,36 @@ $(document).ready(function() {
         goToBottom();
     });
 
+    $("#save-button").click(function(e){
+        console.log("save clicked");
+        if (!lastEmojiId) {
+            alert("Please choose a emoji!");
+            return;
+        }
+        var data = {"time": {"hour": "", "minute": ""}, "date": {"day": "", "month": "", "year": ""}, "emoji": "", "imageData": "", "audioData": ""};
+        data.time.hour = parseInt($('#datetime24').val().substr(0, 2));
+        data.time.minute = parseInt($('#datetime24').val().substr(3, 2));
+        data.date.month = parseInt($('#datetime24').val().substr(6, 2));
+        data.date.day = parseInt($('#datetime24').val().substr(9, 2));
+        data.date.year = parseInt($('#datetime24').val().substr(12, 4));
+        data.emoji = lastEmojiId;
+        data.imageData = imageRecord;
+        data.audioData = audioRecord;
+        data.memo = $("#textareaAtAdd").val();
+        $.post('/insertMemory', data)
+        .done(function( data ) {
+            window.location.href = "/index";
+        })
+        .fail(function() {
+            alert( "error" );
+        });
+    });
+
     $("#textareaAtAdd").hide();
     $("#cameraAreaAtAdd").hide();
     $("#audioAreaAtAdd").hide();
 
-    $('#datetime24').combodate({
-        value:  moment().format('hh:mm')
-    });
+    $('#datetime24').combodate();
 });
 
 function readImage(input) {
@@ -207,6 +236,7 @@ function readImage(input) {
                 console.log(canvas.width + " " + canvas.height);
                 canvas.height = canvas.width / img.width * img.height;
                 context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                imageRecord = canvas.toDataURL();
             };
             img.src = e.target.result;
         };
