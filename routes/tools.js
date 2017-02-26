@@ -91,7 +91,7 @@ exports.numToString = function numToString(num) {
 }
 
 exports.copyDBMemory = function copyMemory(mem2) {
-	var mem1 = {"id": "", "time": {"hour": "", "minute": ""}, "date": {"day": "", "month": "", "year": ""}, "emoji": "", "imageURL": "", "audioURL": "", "memo": ""};
+	var mem1 = {"id": "", "time": {"hour": "", "minute": ""}, "date": {"day": "", "month": "", "year": ""}, "emoji": "", "filename": "", "imageExist": "", "audioExist": "", "memo": ""};
 	mem1.id = mem2.id;
 	mem1.time.hour = mem2.hour;
 	mem1.time.minute = mem2.minute;
@@ -99,8 +99,9 @@ exports.copyDBMemory = function copyMemory(mem2) {
 	mem1.date.month = mem2.month;
 	mem1.date.year = mem2.year;
 	mem1.emoji = mem2.emoji;
-	mem1.imageURL = mem2.imageURL;
-	mem1.audioURL = mem2.audioURL;
+	mem1.filename = mem2.filename;
+	mem1.imageExist = mem2.imageExist;
+	mem1.audioExist = mem2.audioExist;
 	mem1.memo = mem2.memo;
 	return mem1;
 }

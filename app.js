@@ -10,6 +10,7 @@ var handlebars = require('express3-handlebars');
 var moment = require('moment');
 var fs = require('fs');
 var sqlite3 = require('sqlite3');
+var randomstring = require('randomstring');
 
 var login = require('./routes/login');
 

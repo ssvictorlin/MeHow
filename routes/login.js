@@ -18,17 +18,17 @@ exports.viewLogin = function(req, res){
 	if(!fs.existsSync(dbPath)) {
 		console.log("create new DB!");
 		db.serialize(function() {
-			db.run("CREATE TABLE memories (id INTEGER PRIMARY KEY AUTOINCREMENT, hour INT, minute INT, day INT, month INT, year INT, emoji TEXT, imageURL TEXT, audioURL TEXT, memo TEXT)");
+			db.run("CREATE TABLE memories (id INTEGER PRIMARY KEY AUTOINCREMENT, hour INT, minute INT, day INT, month INT, year INT, emoji TEXT, filename TEXT, imageExist INT, audioExist INT, memo TEXT)");
 			
-			var stmt = db.prepare("INSERT INTO memories VALUES(?,?,?,?,?,?,?,?,?,?)");
+			var stmt = db.prepare("INSERT INTO memories VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			for(var i = 0; i < data.memories.length; i++) {
-				stmt.run(data.memories[i].id, data.memories[i].time.hour, data.memories[i].time.minute, data.memories[i].date.day, data.memories[i].date.month, data.memories[i].date.year, data.memories[i].emoji, data.memories[i].imageURL, data.memories[i].audioURL, data.memories[i].memo); 
+				stmt.run(data.memories[i].id, data.memories[i].time.hour, data.memories[i].time.minute, data.memories[i].date.day, data.memories[i].date.month, data.memories[i].date.year, data.memories[i].emoji, data.memories[i].filename, data.memories[i].imageExist, data.memories[i].audioExist, data.memories[i].memo); 
 			}
 			stmt.finalize();
 
-			db.each("SELECT * FROM memories", function(err, row) {
-			  console.log("read" + row.id + " " + row.hour + " " + row.minute + " " + row.day + " " + row.month + " " + row.year + " " + row.emoji + " " + row.imageURL + " " + row.audioURL + " " + row.memo);
-			});
+			// db.each("SELECT * FROM memories", function(err, row) {
+			//   console.log("read" + row.id + " " + row.hour + " " + row.minute + " " + row.day + " " + row.month + " " + row.year + " " + row.emoji + " image " + row.imageExist + " audio " + row.audioExist + " " + row.memo);
+			// });
 
 		});
 		db.close();

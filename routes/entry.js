@@ -8,6 +8,7 @@ var tools = require('./tools');
 
 var dbPath = "./data.db";
 var noImageURL = "/images/no-image.jpg";
+var dataPath = "/data/";
 
 exports.viewEntry = function(req, res){
 	var emojis = require('../emojis.json');
@@ -26,8 +27,14 @@ exports.viewEntry = function(req, res){
 				context.memory.date = tools.monthToString(context.memory.date);
 				context.memory.date = tools.dateToString(context.memory.date);
 				context.memory.time = tools.timeToString(context.memory.time);
-				if (!row.imageURL)
+				if (context.memory.imageExist)
+					context.memory.imageURL = dataPath + row.filename + ".jpg";
+				else
 					context.memory.imageURL = noImageURL;
+
+				if (context.memory.audioExist)
+					context.memory.audioURL = dataPath + row.filename + ".webm";
+				
 				for (var i = 0; i < emojis.emojis.length; i++) {
 					if (context.memory.emoji == emojis.emojis[i].id) {
 						context.memory.emojiImageURL = emojis.emojis[i].imageURL;

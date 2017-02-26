@@ -10,6 +10,7 @@ var sqlite3 = require('sqlite3').verbose();
 
 var dbPath = "./data.db";
 var noImageURL = "/images/no-image.jpg";
+var dataPath = "/data/";
 
 exports.view = function(req, res){
 	var memories = [];
@@ -31,8 +32,13 @@ exports.view = function(req, res){
 				}
 			}
 
-			if (temp.imageURL == "")
+			if (temp.imageExist)
+				temp.imageURL = dataPath + temp.filename + ".jpg";
+			else
 				temp.imageURL = noImageURL;
+
+			if (temp.audioExist)
+				temp.audioURL = dataPath + temp.filename + ".webm";
 
 			memories.push(temp);
 			

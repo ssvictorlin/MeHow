@@ -230,8 +230,11 @@ function save(e) {
     else
         data.imageData = $("#entry-image").attr("src");
 
+    if ($('#player').attr("src") == current_data.audioURL)
+        data.audioData = current_data.audioURL;
+    else
+        data.audioData = audioRecord;
     current_data.audioURL = $('#player').attr("src");
-    data.audioData = audioRecord;
 
     console.log(current_data.memo);
     console.log(current_data.time);
@@ -382,7 +385,7 @@ function removeElement(e){
     }else if(e.target.id == "img-rm-button"){
         console.log("remove image");        
         var img = document.getElementById('entry-image');
-        img.src = '/images/no-image.jpg';
+        img.src = noImageURL;
         //TO-DO: Change the imgURL of the entry to "";
 
     }else if(e.target.id == "text-rm-button"){
