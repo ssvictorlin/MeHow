@@ -141,7 +141,12 @@ function edit(e) {
         $("#audio-rm-button").show();
         $("#audio-record-icon").show();
     }
-    audioRecord = $('#player').attr("src");
+
+    // if(current_data.imageURL == noImageURL){
+    //     $("#img-rm-button").hide();
+    //     $('#entry-image').attr('src','/images/add-image.jpg');
+    // }else{
+    // }
 
     previewCamera();
 }
@@ -390,7 +395,7 @@ function removeElement(e){
 
 
 function overwrite_warning(e){
-    if(!audioRecord){
+    if(!audioRecord && !$('#player').attr('src')){
         $('#audio-ok-button').hide();
         recordAudio(e);    
     }else{
@@ -481,11 +486,7 @@ function recordAudio(e){
             
             //Save to global var.
             // audioRecord = blob;
-            var reader = new window.FileReader();
-            reader.readAsDataURL(blob);
-            reader.onloadend = function() {
-                audioRecord = reader.result;         
-            };
+            
 
             modelExit.onclick = function(e){
                 deleteButton.click();
@@ -503,7 +504,11 @@ function recordAudio(e){
                 deleteButton.click();
                 var player= document.getElementById('player');
                 player.src = audioURL;
-                audioRecord = blob;
+                var reader = new window.FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function() {
+                    audioRecord = reader.result;         
+                };
                 $('#audio-rm-button').show();
                 $('#audio-record-icon').show();
                 $("#recorder-modal").modal("toggle");
