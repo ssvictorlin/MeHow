@@ -479,7 +479,7 @@
         yearDescending: true,
         minuteStep: 1,
         secondStep: 1,
-        firstItem: 'empty', //'name', 'empty', 'none'
+        firstItem: 'none', //'name', 'empty', 'none'
         errorClass: null,
         customClass: '',
         roundTime: true, // whether to round minutes and seconds if step > 1
