@@ -7,6 +7,7 @@ var imageRecord ="";
 var audioRecord ="";
 
 $(document).ready(function() {
+
     // ADD: emoji table selection
     $(".emoji_ADDPAGE").click(function(){
     	//Draw the clicked one.

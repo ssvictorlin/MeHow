@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+var pushpad = require('pushpad');
+
+var AUTH_TOKEN = '69ac2f69facda552679fb58f4cd47384';
+var PROJECT_ID = 2931;
+
+var project = new pushpad.Pushpad({
+  authToken: AUTH_TOKEN,
+  projectId: PROJECT_ID
+});
+
+var str = getDateTime();
+
+var notification = new pushpad.Notification({
+  project: project,
+  body: str, // max 120 characters
+  title: 'Auto Broadcast Testing', // optional, defaults to your project name, max 30 characters
+  targetUrl: 'https://a7-mehow.herokuapp.com', // optional, defaults to your project website // optional, defaults to the project icon
+  ttl: 604800 // optional, drop the notification after this number of seconds if a device is offline
+});
+
+notification.broadcast(function(err, result) { /*...*/ });
+
+
+
+function getDateTime() {
+
+    var date = new Date();
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+    var sec  = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+    return year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
+}
