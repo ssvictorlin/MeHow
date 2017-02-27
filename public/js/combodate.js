@@ -481,7 +481,7 @@
         secondStep: 1,
         firstItem: 'none', //'name', 'empty', 'none'
         errorClass: null,
-        customClass: '',
+        customClass: 'datetimeSelector',
         roundTime: true, // whether to round minutes and seconds if step > 1
         smartDays: true // whether days in combo depend on selected month: 31, 30, 28
     };

@@ -91,11 +91,11 @@ img {
 }
 
 #save-button {
-	position: fixed;
+	/*position: fixed;*/
     bottom: 0px;
     right: 0px;
 	/*float: right;*/
-	background-color: #4CAF50;
+	/*background-color: #4CAF50;*/
     border: none;
     color: white;
     padding: 20px;
@@ -103,17 +103,17 @@ img {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    width: 50%;
+    /*width: 50%;*/
     cursor: pointer;
     z-index: 100;
 }
 
 #cancel-button {
-	position: fixed;
+	/*position: fixed;*/
     bottom: 0px;
     left: 0px;
 	/*float: left;*/
-	background-color: #DE6461;
+	/*background-color: #DE6461;*/
     border: none;
     color: white;
     padding: 20px;
@@ -121,7 +121,7 @@ img {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    width: 50%;
+    /*width: 50%;*/
     cursor: pointer;
     z-index: 100;
 }
@@ -132,4 +132,12 @@ img {
 
 video {
     transform: rotateY(180deg);
+}
+
+.datetimeSelector {
+    border-radius: 10px;
+    border: 2px solid #b3d9ff;
+    padding: 5px;
+    overflow: hidden;
+    text-align: center;
 }
