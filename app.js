@@ -53,6 +53,7 @@ if ('development' == app.get('env')) {
 app.get('/', login.viewLogin);
 
 app.get('/index', index.view);
+app.get('/indexB', index.viewPlayButton);
 
 app.get('/entry/:id', entry.viewEntry);
 

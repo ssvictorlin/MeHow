@@ -30,28 +30,58 @@
 
 	<!-- <script id="memories-container" type="text/x-handlebars-template"> -->
 	<div class="container">
-		{{#each memories}}
-		{{#if date.visible}}
-			<div class="time-bar" id={{id}}>
-				<p>{{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p>
-			</div>
+		{{#if playButton}}
+			{{#each memories}}
+				{{#if date.visible}}
+					<div class="time-bar" id={{id}}>
+						<p>{{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p>
+					</div>
+				{{/if}}
+				<div class="entry clearfix">
+					<!-- <a href="/entry/{{id}}"> -->
+						<div class="emoji-block">
+							<img src="{{emojiImageURL}}" alt="" class="emoji">
+							<div class="index-time">{{time.hour}}:{{time.minute}}</div>
+								{{#if audioURL}}
+									<div id="player-block">
+										<audio class={{audioURL}} onended="var button= document.getElementById($(this).attr('class')); button.src='../images/play.png'; button.classList.remove('on');" src={{audioURL}}></audio>	
+							    		<img class="playButton" id={{audioURL}} src="../images/play.png"></img>
+		 	    					</div>
+								{{/if}}
+							</div>
+							<img src="{{imageURL}}" alt="" class="index-img">
+						<div class=" text-entry text-entry-short"> 
+							<p>{{memo}}</p>
+						</div>
+					<!-- </a> -->
+				</div>
+			{{/each}}
+
+		{{else}}
+
+			{{#each memories}}
+				{{#if date.visible}}
+					<div class="time-bar" id={{id}}>
+						<p>{{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p>
+					</div>
+				{{/if}}
+					<div class="entry clearfix">
+						<a href="/entry/{{id}}">
+							<div class="emoji-block">
+								<img src="{{emojiImageURL}}" alt="" class="emoji">
+								<div class="index-time">{{time.hour}}:{{time.minute}}</div>
+									{{#if audioURL}}
+										<img src="/images/nonEmptyTape.png" class="emoji">
+									{{/if}}
+							</div>
+							<img src="{{imageURL}}" alt="" class="index-img">
+							<div class=" text-entry text-entry-short"> 
+								<p>{{memo}}</p>
+							</div>
+						</a>
+					</div>
+			{{/each}}
 		{{/if}}
-			<div class="entry clearfix">
-				<a href="/entry/{{id}}">
-					<div class="emoji-block">
-						<img src="{{emojiImageURL}}" alt="" class="emoji">
-						<div class="index-time">{{time.hour}}:{{time.minute}}</div>
-							{{#if audioURL}}
-								<img src="/images/nonEmptyTape.png" class="emoji">
-							{{/if}}
-					</div>
-					<img src="{{imageURL}}" alt="" class="index-img">
-					<div class=" text-entry text-entry-short"> 
-						<p>{{memo}}</p>
-					</div>
-				</a>
-			</div>
-		{{/each}}
 	</div>
 	
 	<div class="add-button">

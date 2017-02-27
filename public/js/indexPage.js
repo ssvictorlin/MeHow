@@ -36,6 +36,9 @@ $(document).ready(function() {
             $('body').css('padding-top', 72+'px');
         }
     });
+
+    $('.playButton').click(audioToggle);
+    
 });
 
 
@@ -110,4 +113,20 @@ function monthToString(m) {
             break;
     }
     return monthText;
+}
+
+function audioToggle(e){
+    if($(this).hasClass("on")){
+        $(this).removeClass("on");
+        var elements = document.getElementsByClassName($(this).attr('id'));
+        elements[0].pause();
+        // document.getElementById('player').pause()
+        $(this).attr("src", "../images/play.png")        
+    }else{
+        $(this).addClass("on");
+        var elements = document.getElementsByClassName($(this).attr('id'));
+        elements[0].play();
+        // document.getElementById('player').play()
+        $(this).attr("src", "../images/pause.png")
+    }
 }
