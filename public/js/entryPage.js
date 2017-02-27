@@ -123,6 +123,7 @@ function edit(e) {
     $("#delete-button").show();
     $("#cancel-button").show();
     $("#save-button").show();
+    $("#back-button").hide();
 
     $('#datetime24').show();
     $('#datetime24').combodate();
@@ -182,6 +183,7 @@ function close_edit(e) {
     $("#delete-button").hide();
     $("#cancel-button").hide();
     $("#save-button").hide();
+    $("#back-button").show();
 
     $('#datetime24').combodate('destroy');
     $('#datetime24').hide();
