@@ -38,6 +38,11 @@ $(document).ready(function() {
     });
 });
 
+function func1(date) {
+
+    alert("beforeShow called");
+}
+
 
 function weekday(day) {
     //console.log(day.getDay());
