@@ -24,7 +24,17 @@ $(document).ready(function() {
             $(".avatar").css({
                 "background-image": "url('http://lorempixel.com/200/200/people')"
             });
-            redirect();
+            var name = textfield.val();
+            console.log("before post");
+
+            $.post('/login', {"userName": name})
+            .done(function( data ) {
+                setTimeout(function(){ window.location="/index"; } , 2000);
+            })
+            .fail(function() {
+                alert( "error" );
+            });
+            //redirect();
             /*$('.avatar').load(function() {
 					 window.location.href = "/index";
 			});*/

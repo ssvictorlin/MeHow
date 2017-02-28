@@ -45,3 +45,11 @@ exports.viewLogin = function(req, res){
 	res.render('login');
 };
 
+
+exports.saveLoginName = function(req, res) {
+	console.log("Your name is: "+ req.body.userName);
+	fs.writeFile("loginName.txt", req.body.userName, function() {
+		console.log("name is saved...");
+	});
+	res.end("yes");
+}

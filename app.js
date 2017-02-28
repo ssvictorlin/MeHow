@@ -11,6 +11,7 @@ var moment = require('moment');
 var fs = require('fs');
 var sqlite3 = require('sqlite3');
 var randomstring = require('randomstring');
+var bodyParser = require("body-parser");
 
 var login = require('./routes/login');
 
@@ -44,6 +45,9 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -60,6 +64,8 @@ app.get('/entry/:id', entry.viewEntry);
 app.get('/add', add.viewAdd);
 
 app.get('/setting', setting.viewSetting);
+
+app.post('/login', login.saveLoginName);
 
 app.post('/insertMemory', database.insertMemory);
 app.post('/deleteMemory', database.deleteMemory);
