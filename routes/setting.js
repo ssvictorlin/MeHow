@@ -15,8 +15,4 @@ exports.viewSetting = function(req, res){
 	  		"loginName" : name
 	  	});
 	});
-	/*console.log("B "+ name);
-  	res.render('setting', {
-  		"loginName" : name
-  	});*/
 };
