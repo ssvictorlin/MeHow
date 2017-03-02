@@ -125,8 +125,13 @@ function audioToggle(e){
     }else{
         $(this).addClass("on");
         var elements = document.getElementsByClassName($(this).attr('id'));
+
+        var idx = elements[0].src.indexOf('?');
+        if(idx!=-1)
+            elements[0].src = elements[0].src.substr(0,idx);
+        
         elements[0].src = elements[0].src +"?"+ new Date().getTime();
-        console.log(elements[0].src);
+
         elements[0].play();
         // document.getElementById('player').play()
         $(this).attr("src", "../images/pause.png")
