@@ -11,7 +11,6 @@ var moment = require('moment');
 var fs = require('fs');
 var sqlite3 = require('sqlite3');
 var randomstring = require('randomstring');
-var bodyParser = require("body-parser");
 
 var login = require('./routes/login');
 
@@ -45,8 +44,6 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 // development only
 if ('development' == app.get('env')) {
