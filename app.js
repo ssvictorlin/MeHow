@@ -59,6 +59,8 @@ app.get('/entry/:id', entry.viewEntry);
 
 app.get('/add', add.viewAdd);
 
+app.get('/addB', add.viewAddB);
+
 app.get('/setting', setting.viewSetting);
 
 app.post('/login', login.saveLoginName);

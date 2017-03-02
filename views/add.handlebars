@@ -51,7 +51,6 @@
 				<script>
 					document.writeln("<tr>");
 					var cnt=0;	
-
 					{{#each emojis.emojis}}
 						document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emoji_ADDPAGE"></td></div>');	
 						cnt++;
@@ -64,13 +63,18 @@
 			</table>
 		</div>
 
-
-
 		<div style="margin: 10px;">
 			<table style="width:100%">
-				<td><img src="/images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
-				<td><img src="/images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
-				<td><img src="/images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
+				{{#if orign}}
+					<td><img src="/images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
+					<td><img src="/images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
+					<td><img src="/images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
+				{{else}}
+					<td><img src="/images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
+					<td><img src="/images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
+					<td><img src="/images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
+				{{/if}}
+
 			</table>
 		</div>
 
