@@ -38,7 +38,7 @@
 					</div>
 				{{/if}}
 				<div class="entry clearfix">
-					<div onclick="window.location='/entry/{{id}}'";>
+					<div onclick="location.href='/entry/{{id}}';">
 					<!-- <a href="/entry/{{id}}"> -->
 						<div class="emoji-block">
 							<img src="{{emojiImageURL}}" alt="" class="emoji">
@@ -46,7 +46,7 @@
 								{{#if audioURL}}
 									<div id="player-block">
 										<audio class={{audioURL}} onended="var button= document.getElementById($(this).attr('class')); button.src='../images/play.png'; button.classList.remove('on');" src={{audioURL}}></audio>	
-							    		<img class="playButton" id={{audioURL}} src="../images/play.png"></img>
+							    		<img class="playButton" style="z-index: 100;"id={{audioURL}} src="../images/play.png"></img>
 		 	    					</div>
 								{{/if}}
 							</div>

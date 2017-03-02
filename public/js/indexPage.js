@@ -22,9 +22,6 @@ $(document).ready(function() {
         }
     })
     .hide();
-    /*.click(function() {
-      $(this).hide();
-    });*/
 
     $("#calendar-button").click(function() {
        $("#datepicker").toggle(); 
@@ -116,7 +113,7 @@ function monthToString(m) {
 }
 
 function audioToggle(e){
-    event.stopPropagation();
+    e.stopPropagation();
     if($(this).hasClass("on")){
         $(this).removeClass("on");
         var elements = document.getElementsByClassName($(this).attr('id'));
