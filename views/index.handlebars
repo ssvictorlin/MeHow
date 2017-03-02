@@ -38,6 +38,7 @@
 					</div>
 				{{/if}}
 				<div class="entry clearfix">
+					<div onclick="window.location='/entry/{{id}}'";>
 					<!-- <a href="/entry/{{id}}"> -->
 						<div class="emoji-block">
 							<img src="{{emojiImageURL}}" alt="" class="emoji">
@@ -54,11 +55,11 @@
 							<p>{{memo}}</p>
 						</div>
 					<!-- </a> -->
+					</div>
 				</div>
 			{{/each}}
 
 		{{else}}
-
 			{{#each memories}}
 				{{#if date.visible}}
 					<div class="time-bar" id={{id}}>

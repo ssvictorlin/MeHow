@@ -116,6 +116,7 @@ function monthToString(m) {
 }
 
 function audioToggle(e){
+    event.stopPropagation();
     if($(this).hasClass("on")){
         $(this).removeClass("on");
         var elements = document.getElementsByClassName($(this).attr('id'));
