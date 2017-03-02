@@ -1,7 +1,8 @@
 'use strict';
 var lastEmojiId = 0;
+
 $(document).ready(function() {
- 	// Home: calendar function
+
     $("#datepicker").datepicker({
             changeMonth: true,
             changeYear: true,
