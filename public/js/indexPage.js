@@ -3,6 +3,7 @@ var lastEmojiId = 0;
 
 $(document).ready(function() {
 
+
     $("#datepicker").datepicker({
             changeMonth: true,
             changeYear: true,
@@ -124,6 +125,8 @@ function audioToggle(e){
     }else{
         $(this).addClass("on");
         var elements = document.getElementsByClassName($(this).attr('id'));
+        elements[0].src = elements[0].src +"?"+ new Date().getTime();
+        console.log(elements[0].src);
         elements[0].play();
         // document.getElementById('player').play()
         $(this).attr("src", "../images/pause.png")
