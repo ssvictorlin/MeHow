@@ -3,7 +3,8 @@
 }
 
 #edit-button {
-	width: 65px;
+	height: 48px;
+    margin-top: 4px;
 	float: right;
 }
 
@@ -15,7 +16,6 @@
     overflow-y: auto;
 	padding: 5px;
     font-size: 15px;
-    /*font-size: 4vw;*/
 }
 
 .edit-text-entry[disabled] {

@@ -2,11 +2,22 @@
 var lastEmojiId = 0;
 
 $(document).ready(function() {
-
-
+    var eventDates = {};
+    $(".time-bar").each(function(){
+       eventDates[ new Date( $(this).attr('id') )] = new Date ( $(this).attr('id') );
+    });
+ 	// Home: calendar function
     $("#datepicker").datepicker({
             changeMonth: true,
             changeYear: true,
+            beforeShowDay: function(date) {
+                var highlight = eventDates[date];
+                if( highlight ) {
+                     return [true, "event", ''];
+                } else {
+                     return [true, '', ''];
+                }
+            },
             onSelect: function() { 
             var dateObject = $(this).datepicker('getDate'); 
             console.log('Month: '+ dateObject.getMonth()+ ', Date: '+ dateObject.getDate()+ ', Year: '+ dateObject.getFullYear());
