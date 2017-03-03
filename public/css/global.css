@@ -17,10 +17,14 @@ img {
     max-height: 100%;   
 }
 
+.icon1 {
+    width: auto;
+	padding: 10px;
+}
+
 .icon {
     width: 64px;
-	padding: 10px;
-    margin: auto;
+    padding: 10px;
 }
 
 .big-icon {
