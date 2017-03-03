@@ -1,10 +1,23 @@
 'use strict';
 var lastEmojiId = 0;
+
 $(document).ready(function() {
+    var eventDates = {};
+    $(".time-bar").each(function(){
+       eventDates[ new Date( $(this).attr('id') )] = new Date ( $(this).attr('id') );
+    });
  	// Home: calendar function
     $("#datepicker").datepicker({
             changeMonth: true,
             changeYear: true,
+            beforeShowDay: function(date) {
+                var highlight = eventDates[date];
+                if( highlight ) {
+                     return [true, "event", ''];
+                } else {
+                     return [true, '', ''];
+                }
+            },
             onSelect: function() { 
             var dateObject = $(this).datepicker('getDate'); 
             console.log('Month: '+ dateObject.getMonth()+ ', Date: '+ dateObject.getDate()+ ', Year: '+ dateObject.getFullYear());
@@ -22,9 +35,6 @@ $(document).ready(function() {
         }
     })
     .hide();
-    /*.click(function() {
-      $(this).hide();
-    });*/
 
     $("#calendar-button").click(function() {
        $("#datepicker").toggle(); 
@@ -36,6 +46,9 @@ $(document).ready(function() {
             $('body').css('padding-top', 72+'px');
         }
     });
+
+    $('.playButton').click(audioToggle);
+    
 });
 
 
@@ -110,4 +123,28 @@ function monthToString(m) {
             break;
     }
     return monthText;
+}
+
+function audioToggle(e){
+    e.stopPropagation();
+    if($(this).hasClass("on")){
+        $(this).removeClass("on");
+        var elements = document.getElementsByClassName($(this).attr('id'));
+        elements[0].pause();
+        // document.getElementById('player').pause()
+        $(this).attr("src", "../images/play.png")        
+    }else{
+        $(this).addClass("on");
+        var elements = document.getElementsByClassName($(this).attr('id'));
+
+        var idx = elements[0].src.indexOf('?');
+        if(idx!=-1)
+            elements[0].src = elements[0].src.substr(0,idx);
+        
+        elements[0].src = elements[0].src +"?"+ new Date().getTime();
+
+        elements[0].play();
+        // document.getElementById('player').play()
+        $(this).attr("src", "../images/pause.png")
+    }
 }

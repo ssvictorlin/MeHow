@@ -49,14 +49,13 @@ function initializePage() {
     $('.rm-element-button').hide();
     $('.edit-audio-control').hide();
     $('#playButton').click(audioToggle);
-    $('#stopButton').click(resetMusic);    
     $('#askForRecordButton').click(overwrite_warning);
     $('#audio-ok-button').hide();
 
     $(".rm-element-button").click(removeElement);
     var player = document.getElementById('player');
     player.onended = function(){
-        console.log("Music ended");
+        // console.log("Music ended");
         $('#playButton').removeClass("on");
         $('#playButton').attr("src", "../images/play.png");
     }
@@ -85,13 +84,6 @@ function initializePage() {
     if(!current_data.audioURL){
         $(".audioButton").hide()
     }
-}
-
-function resetMusic(e){
-    document.getElementById('player').pause();
-    document.getElementById('player').currentTime = 0;
-    $('#playButton').removeClass("on");
-    $('#playButton').attr("src", "../images/play.png");
 }
 
 function audioToggle(e){
@@ -123,6 +115,7 @@ function edit(e) {
     $("#delete-button").show();
     $("#cancel-button").show();
     $("#save-button").show();
+    $("#back-button").hide();
 
     $('#datetime24').show();
     $('#datetime24').combodate();
@@ -142,11 +135,11 @@ function edit(e) {
         $("#audio-record-icon").show();
     }
 
-    // if(current_data.imageURL == noImageURL){
-    //     $("#img-rm-button").hide();
-    //     $('#entry-image').attr('src','/images/add-image.jpg');
-    // }else{
-    // }
+    if(current_data.imageURL == noImageURL){
+        $("#img-rm-button").hide();
+        // $('#entry-image').attr('src','/images/add-image.jpg');
+    }else{
+    }
 
     previewCamera();
 }
@@ -182,6 +175,7 @@ function close_edit(e) {
     $("#delete-button").hide();
     $("#cancel-button").hide();
     $("#save-button").hide();
+    $("#back-button").show();
 
     $('#datetime24').combodate('destroy');
     $('#datetime24').hide();
@@ -289,6 +283,7 @@ function snapImage() {
     context.scale(-1, 1);
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     $("#entry-image").attr("src", canvas.toDataURL(""));
+    $("#img-rm-button").show();
 }
 
 function readImageFile() {
@@ -300,6 +295,7 @@ function readImageFile() {
     x.onchange = function() {
         readImage(this);
     };
+    $("#img-rm-button").show();
 }
 
 function readImage(input) {
@@ -385,6 +381,7 @@ function removeElement(e){
     }else if(e.target.id == "img-rm-button"){
         console.log("remove image");        
         var img = document.getElementById('entry-image');
+        $('#img-rm-button').hide();
         img.src = noImageURL;
         //TO-DO: Change the imgURL of the entry to "";
 

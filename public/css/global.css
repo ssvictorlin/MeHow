@@ -8,6 +8,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 56px;
     background-color: #b3d9ff;
 }
 
@@ -17,8 +18,9 @@ img {
 }
 
 .icon {
-	width: 64px;
+    width: 64px;
 	padding: 10px;
+    margin: auto;
 }
 
 .big-icon {
@@ -86,42 +88,23 @@ img {
 
 .button-row {
 	margin-top: 10px;
-	/*display: inline-block;*/
     text-align: center;
 }
 
 #save-button {
-	position: fixed;
-    bottom: 0px;
-    right: 0px;
-	/*float: right;*/
-	background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
+    height: 48px;
+    margin-top: 4px;
+	float: right;
     display: inline-block;
-    font-size: 16px;
-    width: 50%;
     cursor: pointer;
     z-index: 100;
 }
 
 #cancel-button {
-	position: fixed;
-    bottom: 0px;
-    left: 0px;
-	/*float: left;*/
-	background-color: #DE6461;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
+    height: 48px;
+    margin-top: 4px;
+	float: left;
     display: inline-block;
-    font-size: 16px;
-    width: 50%;
     cursor: pointer;
     z-index: 100;
 }
@@ -132,4 +115,12 @@ img {
 
 video {
     transform: rotateY(180deg);
+}
+
+.datetimeSelector {
+    border-radius: 10px;
+    border: 2px solid #b3d9ff;
+    padding: 5px;
+    overflow: hidden;
+    text-align: center;
 }

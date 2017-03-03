@@ -41,7 +41,11 @@ exports.view = function(req, res){
 				temp.audioURL = dataPath + temp.filename + ".webm";
 
 			memories.push(temp);
-			
+				
+			// Testing 
+			console.log(temp.filename + " "+ temp.audioURL);
+
+
 		}, function(){
 			memories.sort(function(a, b){
 				if(a.date.year != b.date.year)

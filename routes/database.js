@@ -14,8 +14,12 @@ exports.insertMemory = function(req, res){
 	if (data.imageData) {
 		// imageURL = dataPath + data.date.year + "-" + data.date.month + "-" + data.date.day + "-" + data.time.hour + "-" + data.time.minute + ".jpg";
 		var imageURL = dataPath + filename + ".jpg";
-		var base64Data = data.imageData.replace(/^data:image\/png;base64,/, "");
-		fs.writeFile(imageURL, base64Data, 'base64', function(err) {
+
+		var matches = data.imageData.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), response = {};
+		response.type = matches[1];
+		response.data = new Buffer(matches[2], 'base64');
+
+		fs.writeFile(imageURL, response.data, 'base64', function(err) {
 			console.log(err);
 		});
 		imageExist = 1;
@@ -112,8 +116,12 @@ exports.updateMemory = function(req, res){
 		else if (data.imageData && data.imageData.substring(0, 5) != "/data") {
 			console.log("update exist image");
 			var imageURL = dataPath + row.filename + ".jpg";
-			var base64Data = data.imageData.replace(/^data:image\/png;base64,/, "");
-			fs.writeFile(imageURL, base64Data, 'base64', function(err) {
+
+			var matches = data.imageData.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/), response = {};
+			response.type = matches[1];
+			response.data = new Buffer(matches[2], 'base64');
+
+			fs.writeFile(imageURL, response.data, 'base64', function(err) {
 				console.log(err);
 			});
 		}

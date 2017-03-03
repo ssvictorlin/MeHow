@@ -24,7 +24,10 @@
 		<a href="/index" id="back-button">
 			<img src="/images/back-icon-128.png" class="icon" id="back-icon">
 		</a>
-		<img src="/images/edit-icon.png" class="icon" id="edit-button">
+		<img src="/images/edit-icon1.png" class="icon" id="edit-button">
+		<img src="/images/cancel-icon1.png" class="icon" id="cancel-button">
+		<img src="/images/save-icon1.png" class="icon" id="save-button">
+
 	</header>
 	<div class="container" id="entry-container" data-entryid="{{memory.id}}">
 		<div class="time-bar">
@@ -53,7 +56,6 @@
 
 				<div id="player-block">
 					<audio id="player" src="{{memory.audioURL}}"></audio>	
-	 	    		<img class="audioButton" id="stopButton" src="../images/stop.png"></img>
 		    		<img class="audioButton" id="playButton" src="../images/play.png"></img>
 	 	    	</div>
 	    	</div>	
@@ -200,11 +202,6 @@
 
 
 	<button id="delete-button" data-toggle="modal" data-target="#warning-modal">Delete</button>
-
-	<div class="button-row">
-		<a href="/" id="cancel-button">Cancel</a>
-		<a href="" id="save-button">Save</a>
-	</div>
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 

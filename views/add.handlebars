@@ -27,9 +27,10 @@
 
 <body>
 	<header id="main-nav-bar">
-		<a href="/index" id="back-button">
-			<img src="/images/back-icon-128.png" class="icon">
+		<a href="/index" id="cancel-button">
+			<img src="/images/cancel-icon1.png" class="icon">
 		</a>
+			<img src="/images/save-icon1.png" class="icon" id="save-button">
 	</header>
 	<div class="container">
 		<div class="time-bar">
@@ -49,7 +50,6 @@
 				<script>
 					document.writeln("<tr>");
 					var cnt=0;	
-
 					{{#each emojis.emojis}}
 						document.writeln('<div><td><img src={{imageURL}} id={{id}} class="emoji_ADDPAGE"></td></div>');	
 						cnt++;
@@ -62,13 +62,18 @@
 			</table>
 		</div>
 
-
-
 		<div style="margin: 10px;">
 			<table style="width:100%">
-				<td><img src="/images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
-				<td><img src="/images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
-				<td><img src="/images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
+				{{#if orign}}
+					<td><img src="/images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
+					<td><img src="/images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
+					<td><img src="/images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
+				{{else}}
+					<td><img src="/images/recorder_button.png" class="buttons" id="recorderButton" width=60px height = 60px></td>
+					<td><img src="/images/camera_button.png" class="buttons" id="cameraButton" width=60px height = 60px data-toggle="modal" data-target="#camera-modal"></td>
+					<td><img src="/images/memo_button.png" class="buttons" id="memoButton" width=60px height = 60px></td>
+				{{/if}}
+
 			</table>
 		</div>
 
@@ -111,12 +116,6 @@
           </div>
         </div>
 
-
-		<div class="button-row">
-			<a href="/index" id="cancel-button">Cancel</a>
-			<!-- <a href="/index" id="save-button">Save</a> -->
-			<button id="save-button">Save</button>
-		</div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery.js"></script>

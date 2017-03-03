@@ -1,7 +1,11 @@
 <!doctype html>
 <html>
 <head>
-	<title>MeHow</title>	
+	<title>MeHow</title>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -28,28 +32,30 @@
 		<div id="datepicker"></div>
 	</header>
 
-	<!-- <script id="memories-container" type="text/x-handlebars-template"> -->
 	<div class="container">
 		{{#each memories}}
-		{{#if date.visible}}
-			<div class="time-bar" id={{id}}>
-				<p>{{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p>
-			</div>
-		{{/if}}
+			{{#if date.visible}}
+				<div class="time-bar" id={{date.month}}/{{date.day}}/{{date.year}}>
+					<p>{{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p>
+				</div>
+			{{/if}}
 			<div class="entry clearfix">
-				<a href="/entry/{{id}}">
+				<div onclick="location.href='/entry/{{id}}';">
 					<div class="emoji-block">
 						<img src="{{emojiImageURL}}" alt="" class="emoji">
 						<div class="index-time">{{time.hour}}:{{time.minute}}</div>
 							{{#if audioURL}}
-								<img src="/images/nonEmptyTape.png" class="emoji">
+								<div id="player-block">
+									<audio class={{audioURL}} onended="var button= document.getElementById($(this).attr('class')); button.src='../images/play.png'; button.classList.remove('on');" src={{audioURL}}></audio>	
+						    		<img class="playButton" style="z-index: 100;"id={{audioURL}} src="../images/play.png"></img>
+	 	    					</div>
 							{{/if}}
-					</div>
-					<img src="{{imageURL}}" alt="" class="index-img">
+						</div>
+						<img src="{{imageURL}}" alt="" class="index-img">
 					<div class=" text-entry text-entry-short"> 
 						<p>{{memo}}</p>
 					</div>
-				</a>
+				</div>
 			</div>
 		{{/each}}
 	</div>

@@ -48,3 +48,9 @@ div.ui-datepicker td {
 	font-size: 5vw;
 	text-align: center;
 }
+
+.event a {
+    background-color: #5FBA7D !important;
+    color: #ffffff !important;
+}
+
