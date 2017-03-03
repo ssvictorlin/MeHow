@@ -8,6 +8,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 56px;
     background-color: #b3d9ff;
 }
 
@@ -17,8 +18,9 @@ img {
 }
 
 .icon {
-	width: 64px;
+    width: auto;
 	padding: 10px;
+    margin: auto;
 }
 
 .big-icon {
@@ -86,27 +88,22 @@ img {
 
 .button-row {
 	margin-top: 10px;
-	/*display: inline-block;*/
     text-align: center;
 }
 
 #save-button {
-    right: 0px;
-    height: 64px;
+    height: 48px;
+    margin-top: 4px;
 	float: right;
-    border: none;
-    text-align: center;
     display: inline-block;
     cursor: pointer;
     z-index: 100;
 }
 
 #cancel-button {
-    left: 0px;
-    height: 64px;
+    height: 48px;
+    margin-top: 4px;
 	float: left;
-    border: none;
-    text-align: center;
     display: inline-block;
     cursor: pointer;
     z-index: 100;

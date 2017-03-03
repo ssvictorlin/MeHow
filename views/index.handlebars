@@ -33,7 +33,7 @@
 		{{#if playButton}}
 			{{#each memories}}
 				{{#if date.visible}}
-					<div class="time-bar" id={{id}}>
+					<div class="time-bar" id="{{date.month}}/{{date.day}}/{{date.year}}">
 						<p>{{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p>
 					</div>
 				{{/if}}
@@ -62,7 +62,7 @@
 		{{else}}
 			{{#each memories}}
 				{{#if date.visible}}
-					<div class="time-bar" id={{id}}>
+					<div class="time-bar" id={{date.month}}/{{date.day}}/{{date.year}}>
 						<p>{{date.weekday}} {{date.monthText}} {{date.day}}, {{date.year}}</p>
 					</div>
 				{{/if}}
