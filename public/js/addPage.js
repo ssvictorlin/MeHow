@@ -6,6 +6,11 @@ var recording = false;
 var imageRecord ="";
 var audioRecord ="";
 
+
+//Used for GA
+var memoButtonClicked = false;
+var recorderButtonClicked = false;
+
 $(document).ready(function() {
 
     // ADD: emoji table selection
@@ -22,6 +27,10 @@ $(document).ready(function() {
     });
 
     $("#memoButton").click(function(){
+        if(memoButtonClicked == false){
+            ga('send','event','memoButton','click');
+            memoButtonClicked = true;
+        }
     	// console.log("memoButton clicked");  
     	$("#textareaAtAdd").toggle();
         $("#audioAreaAtAdd").hide();
@@ -74,6 +83,10 @@ $(document).ready(function() {
     });
 
     $("#recorderButton").click(function(){
+        if(recorderButtonClicked == false){
+            ga('send','event','recorderButton','click');
+            recorderButtonClicked = true;
+        }
 
         navigator.getUserMedia = ( navigator.getUserMedia ||
                        navigator.webkitGetUserMedia ||
