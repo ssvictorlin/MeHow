@@ -51,8 +51,7 @@
 			<div id="audio-block">
 				
 				<div class="edit-audio-control">
-					<img class="audioButton inputShadow" id="audio-record-icon" src="/images/nonEmptyTape.png"></img>
-					<img class="rm-element-button" id="audio-rm-button" src="/images/remove-symbol.png"></img>
+					<!--<img class="audioButton" id="audio-record-icon" src="/images/nonEmptyTape.png"></img>-->
 					<img class="audioButton inputShadow" id="askForRecordButton" src="../images/recorder_button.png"></img>
 				</div>
 
@@ -63,12 +62,10 @@
 	    	</div>	
 			
 			<!-- <div> -->
-			<div>
-				<img class="rm-element-button" id="img-rm-button" src="/images/remove-symbol.png"></img>			
+			<div>		
 				<img src="{{memory.imageURL}}" class="entry-img" id="entry-image" data-toggle="modal">
 			</div>
 			<div>
-				<img class="rm-element-button" id="text-rm-button" src="/images/remove-symbol.png"></img>	
 				<textarea class="edit-text-entry" id="edit-text" disabled>{{memory.memo}}</textarea>
 			</div>
 			<!-- </div> -->
@@ -203,7 +200,7 @@
         </div>
 
 
-	<button id="delete-button" data-toggle="modal" data-target="#warning-modal">Delete</button>
+	<button id="delete-button" data-toggle="modal" data-target="#warning-modal">Delete this entry</button>
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 

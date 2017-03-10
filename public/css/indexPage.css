@@ -16,9 +16,9 @@ div.ui-datepicker td {
 	text-align: center;
 }
 
-.entry:active {
+/*.entry:active {
   transform: translateY(3px);
-}
+}*/
 
 .text-entry {
 	float: left;
@@ -46,6 +46,7 @@ div.ui-datepicker td {
 .index-img {
     width: 75%;
     float: right;
+    box-shadow: 0 0px 2px 2px #B8B8B8;
 }
 
 .index-time {

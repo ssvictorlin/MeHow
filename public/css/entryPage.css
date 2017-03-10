@@ -31,7 +31,8 @@
 
 .inputShadow{
 	box-shadow: 2px 2px 2px 0px #dddddd;
-    border: 1px solid #000000;
+	border: 2px solid #6EC995;
+	border-radius: 10px;
 }
 
 .entry-img {
@@ -41,23 +42,29 @@
     z-index: 1;
 }
 
+#entry-image {
+	display: block;
+	margin-top: 60px !important;
+	box-shadow: 0 1px 1px 1px #B8B8B8;
+}
+
 #file-input {
     display: none;
 }
 
 #delete-button {
-	padding: 10px;
+	width: 100%;
 	background-color: #ff0000;
-	margin-left: 10px;
 	margin-bottom: 50px;
+	font-size: 15px;
 }
 
 .audioButton{
 	float: right;
 	/*margin: auto;*/
 	/*display: block;*/
-	width: 30%;
-	height: 30%;
+	width: 50px;
+	height: 50px;
 }
 /*.emoji{
 	width:30px;
@@ -66,8 +73,8 @@
 	float: left;
 	margin: auto;
 	display: block;
-	width: 30%;
-	height: 30%;
+	width: 50px;
+	height: 50px;
 }
 
 .emojis{
@@ -80,7 +87,7 @@
 	/*margin-bottom: 10px;*/
 }
 #audio-block{
-	width:50%;
+	width: 50%;
 	float: right;
 	position:relative;
 	float: right;
@@ -105,6 +112,7 @@
      right:-60px;
      z-index:2;
 }
+
 
 .rm-element-button {
      width: 30px;
