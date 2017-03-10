@@ -31,7 +31,9 @@
 	</header>
 	<div class="container" id="entry-container" data-entryid="{{memory.id}}">
 		<div class="time-bar">
+			<div class="time-edit">
 			<input id="datetime24" data-format="HH:mm MM-DD-YYYY" data-template="HH : mm MM / DD / YYYY" name="datetime" value="{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.month}}-{{memory.date.day}}-{{memory.date.year}}" type="text">
+			</div>
 			<p id="entry-time" data-month="{{memory.date.month}}">{{memory.time.hour}}:{{memory.time.minute}} {{memory.date.weekday}} {{memory.date.monthText}} {{memory.date.day}}, {{memory.date.year}}</p>
 		</div>
 		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
