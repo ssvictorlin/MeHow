@@ -1,5 +1,6 @@
 #calendar-button {
 	float: right;
+	margin-right: 5px;
 }
 
 #datepicker {
@@ -13,6 +14,10 @@ div.ui-datepicker {
 
 div.ui-datepicker td {
 	text-align: center;
+}
+
+.entry:active {
+  transform: translateY(3px);
 }
 
 .text-entry {
@@ -50,7 +55,7 @@ div.ui-datepicker td {
 }
 
 .event a {
-    background-color: #5FBA7D !important;
+    background-color: #6EC995 !important;
     color: #ffffff !important;
 }
 
