@@ -19,7 +19,7 @@
 }
 
 button[name="login-submit"].alert-success{
-    background: rgb(25, 204, 25);
+    background: #6EC995;
     color:white;
 }
 
