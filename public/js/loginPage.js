@@ -1,9 +1,12 @@
 'use strict';
 $(document).ready(function() {
     // LOGIN: sumbit button pressed
+    setTimeout(function() {$(".loading").fadeOut("slow"); }, 3000);
+
     var textfield = $("input[name=user]");
     $('button[type="submit"]').click(function(e) {
         e.preventDefault();
+
         //little validation just to check username
         if (textfield.val() != "") {
             //$("#output").addClass("alert alert-success animated fadeInUp").html("Welcome back " + textfield.val());
